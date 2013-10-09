@@ -11,6 +11,8 @@ Given /And I am on the RottenPotatoes home page/ do |page_name|
   visit path_to(page_name)
 end
 
+# Make sure that one string (regexp) occurs before or after another one
+#   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
