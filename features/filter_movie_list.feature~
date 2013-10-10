@@ -32,7 +32,7 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   Then 'PG' and 'R' movies are visible
   And 'PG-13' and 'G' movies are not visible
   And I should see ratings R, PG
-  And I shouldn't see ratings PG-13, G
+  And I shouldn't see ratings 'PG-13', 'G'
 
 Scenario: all ratings selected
   # see assignment
