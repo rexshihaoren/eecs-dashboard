@@ -24,15 +24,13 @@ Background: movies have been added to database
 Scenario: restrict to movies with 'PG' or 'R' ratings
   
   Given I am on the RottenPotatoes home page 
-  When I check 'PG'
-  When I check 'R'
-  When I uncheck 'PG-13'
-  When I uncheck 'G'
+  When I check the following ratings: PG, R
+  When I uncheck the following ratings: PG-13, G
   When I press the refresh button
-  Then 'PG' and 'R' movies are visible
-  And 'PG-13' and 'G' movies are not visible
-  And I should see ratings R, PG
+  And I should see ratings R, PG 
   And I shouldn't see ratings PG-13, G
 
 Scenario: all ratings selected
-  # see assignment
+  When I check the following ratings: G, PG, PG-13, R
+  And I press the refresh button 
+  Then I should see all the movies

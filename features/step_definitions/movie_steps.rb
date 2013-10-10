@@ -10,42 +10,28 @@ Given /And I am on the RottenPotatoes home page/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^I check '(.*)'$/ do |field|
-  result =  "ratings_" + field
-  check(result)
-end
-
-When /^(?:|I )uncheck '(.*)'$/ do |field|
-  result = "ratings_" + field
-  uncheck(result)
+When /^I check the following ratings:'(.*)'$/ do |field|
+  ratings = field.split(',')
+  ratings.each do |r|
+   puts "R= #{r}"
+   result =  "ratings_" + r
+   check(result)
+  end
 end
 
 When /^(?:|I )press the refresh button$/ do 
   click_button("ratings_submit")
 end
 
-
-
-Then(/^'(.*)' and '(.*)' movies are visible$/) do |r1, r2|
-  
-end
-
-Then(/^'(.*)' and '(.*)' movies are not visible$/) do |r1, r2|
-  
-end
-
 Then /I should(n't)? see ratings (.*)/ do |which, title_list|
   puts "which #{which}"
   titles = title_list.split(", ")
     titles.each do |title|
-      puts "Findings #{find('#movies').find('tbody').first('tr', :text => " #{title} ")}"
-
       if find('#movies').respond_to? :should
         if which == "n't" then
           assert find('#movies').find('tbody').first('tr', :text => " #{title} ") == nil
         else
           assert find('#movies').find('tbody').first('tr', :text => " #{title} ") != nil
-           #find('#movies').find('tbody').should have_content(" #{title} ")
         end
       else
         if which then
@@ -66,16 +52,20 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   
 end
 
-# Make it easier to express checking or unchecking several boxes at once
-#  "When I uncheck the following ratings: PG, G, R"
-#  "When I check the following ratings: G"
-
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
-  # HINT: use String#split to split up the rating_list, then
-  #   iterate over the ratings and reuse the "When I check..." or
-  #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+  ratings = rating_list.split(", ")
+  ratings.each do |r|
+    result = "ratings_" + r  
+    if uncheck == "un" then 
+      uncheck(result)   
+    else
+      check(result)
+    end
+  end
 end
 
 Then /I should see all the movies/ do
-  # Make sure that all the movies in the app are visible in the table
+  numberOfMovies = Movie.all.count
+  rows = find('#movies').find('tbody').all('tr').count
+  rows.should == numberOfMovies
 end

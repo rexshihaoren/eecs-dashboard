@@ -16,3 +16,4 @@ Connecting to database specified by database.yml
   [1m[35m (18.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111119180638')
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
