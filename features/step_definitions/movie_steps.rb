@@ -23,33 +23,36 @@ When /^(?:|I )press the refresh button$/ do
   click_button("ratings_submit")
 end
 
-Then /I should(n't)? see ratings (.*)/ do |which, title_list|
+Then /I should(n't)? see ratings (.*)/ do |which, rating_list|
   puts "which #{which}"
-  titles = title_list.split(", ")
-    titles.each do |title|
-      if find('#movies').respond_to? :should
-        if which == "n't" then
-          assert find('#movies').find('tbody').first('tr', :text => " #{title} ") == nil
-        else
-          assert find('#movies').find('tbody').first('tr', :text => " #{title} ") != nil
-        end
+  ratings = rating_list.split(", ")
+    ratings.each do |r|
+      if which == "n't" then
+        assert find('#movies').find('tbody').first('tr', :text => " #{r} ") == nil, "Ratings that should be there aren't appearing"
       else
-        if which then
-          assert page.has_content?(title) == false
-        else
-          assert page.has_content?(title)
-        end          
+        assert find('#movies').find('tbody').first('tr', :text => " #{r} ") != nil, "Ratings that should be there aren't appearing"
       end
-  end
+   end
 end
 
 
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  puts "Page = #{page.body}"
-  #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  
+  counter = 0
+  positionOfE1 = -1
+  positionOfE2 = -1
+  page.all('tr').each() do |row|
+    row.all('td').each()  do |cell|
+      counter = counter + 1
+      if cell.text ==  e1
+        positionOfE1 = counter
+      elsif cell.text == e2
+        positionOfE2 = counter
+      end
+    end 
+  end 
+  assert positionOfE1 != -1 &&  positionOfE2 != -1, "Items not found in DB"
+  assert positionOfE1 < positionOfE2
 end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
@@ -63,6 +66,16 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     end
   end
 end
+
+When(/^I press the order by title button$/) do
+  click_link("title_header")
+end
+
+When(/^I press the order by release_date button$/) do
+  click_link("release_date_header")
+end
+
+
 
 Then /I should see all the movies/ do
   numberOfMovies = Movie.all.count
