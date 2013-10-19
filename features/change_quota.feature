@@ -14,7 +14,7 @@ Scenario: fill in valid change_quota value (happy path)
   
   Given I am on the view_quota page
   When I fill in change_quota field with valid_value
-  And I press the submit button
+  And I press 'Submit'
   Then I should see "Submitted!"
   And I should not see "Invalid"
   And I should see current_month_quota changed to new_value
@@ -23,5 +23,5 @@ Scenario: fill in invalid change_quota value (sad path)
   
   Given I am on the view_quota page
   When I fill in change_quota field with invalid_value
-  And I press the submit button
+  And I press 'Submit'
   Then I should see "Invalid"
