@@ -6,7 +6,7 @@ Fix up and create a self service dashboard for EECS Department of UC Berkeley (I
 
 ###Features: 
 ####1. View quota
-As a user who uses storage services, so that I can understand how much storage is available for me, I want to see my storage quota for my project (current value and some visualization of past history).
+As a user who uses storage services, so that I can understand how much storage is available for me, I want to see my storage quota for my projects (current value and some visualization of past history).
 ####2. Change quota
 As a user who uses storage services, so that I can adjust to changes in my project, I want to change my storage quota.
 ####3. View billing
