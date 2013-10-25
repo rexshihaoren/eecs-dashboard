@@ -6,7 +6,20 @@ Feature: change quota
 
 Background: quotas for the past 12 months have been added to database
 
-  Given the following quota exist:
+  Given the following month_quota exist:
+  | month      | usage  | quota |
+  | Jan-2013   | 5      | 10    |
+  | Feb-2013   | 6      | 10    |
+  | Mar-2013   | 1      | 10    |
+  | Apr-2013   | 8      | 10    |
+  | May-2013   | 5      | 10    |
+  | Jun-2013   | 7      | 10    |
+  | July-2013  | 9      | 10    |
+  | Aug-2013   | 2      | 10    |
+  | Sep-2013   | 5      | 10    |
+  | Oct-2013   | 4      | 10    |
+  | Nov-2013   | 3      | 10    |
+  | Dec-2013   | 2      | 10    |
 
   And  I am on the view_quota page
 
