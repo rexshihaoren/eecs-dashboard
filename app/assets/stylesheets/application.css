@@ -1,0 +1,106 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: White;
+  color: DarkSlateGrey;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 10pt;
+}
+div#header {
+  margin-bottom: 20px;
+  background-color: #002061;
+  width: 100%;
+  height: 70px;
+  border-bottom: 10px solid #fddd88;
+}
+
+
+table#viewquota_table {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+  font-size: 1.05em;
+  font-family: Verdana, Arial, sans-serif;
+  color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center; 
+  border-spacing: 10px;
+  margin-bottom: 30px;
+}
+table#viewquota_table head{
+  font-size: 30px;
+  font-family: Verdana, Arial, sans-serif;
+  font-weight: bold;
+}
+
+#viewquota_table_header{
+  font-size: 21px;
+  font-family: Verdana, Arial, sans-serif;
+  border-bottom: 2px solid black;
+}
+
+table#viewquota_table th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: wheat;
+
+}
+
+span#head-text {
+  position: absolute;
+  top: 20px;
+  left: 517px;
+  color: white;
+  font-size: 20px;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+div#main {
+  margin: 0;
+  padding: 0 20px 20px;
+}
+a {
+  background: transparent;
+  color: #00f;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+h1 {
+  color: black;
+  font-size: 150%;
+  font-style: italic;
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid #fddd88;
+  margin-bottom: 10px;
+}
+h1.title {
+  margin: 0 0 1em;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  border-bottom: 4px solid gold;
+  font-size: 2em;
+  font-style: normal;
+  display: none;
+}
+#berkeley_logo {
+  position: absolute;
+  top: 20px;
+  right: 518px;
+}
+
+#eecs_logo {
+  position: absolute;
+  top: 22px;
+  right: 433px;
+}
+
+#iris_logo{
+left: 399px;
+position: absolute;
+top: 9px;
+}

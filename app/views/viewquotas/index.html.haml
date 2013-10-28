@@ -1,0 +1,26 @@
+%div#header
+  %img{:src => "/images/iris_logo.png", :id => "iris_logo"}
+  %img{:src => "/images/eecs_logo.png", :id => "eecs_logo"}
+  %img{:src => "/images/berkeley_logo.png", :id => "berkeley_logo"}
+  %span#head-text Instructional and Research Computer Systems
+
+%h1 #{@storage_data.keys[0]}'s Quota
+
+%table#viewquota_table
+  %head
+    %tr{:id => "viewquota_table_header"}
+      %td Project Name 
+      %td Percent of Quota Used
+      %td Detailed Info
+  %tbody
+    - @storage_data.values.each do |storage|
+      - storage.each do |proj, percent|
+        %tr
+          %td= proj
+          %td= percent
+          %td= link_to "Detailed Information about #{proj}", "www.google.com"
+          %br/
+
+
+=link_to "Back to DashBoard", movies_path
+          
