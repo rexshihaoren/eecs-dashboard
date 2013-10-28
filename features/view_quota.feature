@@ -19,5 +19,5 @@ Scenario: press on view_quota button
   
   Given I am on the dashboard page 
   When I follow 'View Quota'
-  Then I should be on the view_quota Page 
+  Then I should be on the view_quota page 
   And I should see all percentages_of_usage
