@@ -1,5 +1,4 @@
 Feature: change quota
- 
   As a user who uses storage services
   So that I can adjust to changes in my project
   I want to see my storage quota for my project
@@ -12,6 +11,7 @@ Background: quotas for the past 12 months have been added to database
 
 
 Scenario: see the data
+
   Then I should see a detailed view of the quota history
 
 Scenario: fill in valid change_quota value (happy path)
