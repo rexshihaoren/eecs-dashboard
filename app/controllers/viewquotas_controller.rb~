@@ -1,5 +1,14 @@
 class ViewquotasController < ApplicationController
   def index
-    @storage_data = {"Bob" => {"proj1" => 0.97, "proj2" => 0.45, "proj3" => 0.28}}
+    if params[:quota_name]
+	flash.now[:notice] = ("Directory Quota was successfully changed")
+    else 
+	flash[:notice] = ""
+    end 
+    puts "params #{params.inspect}"
+    @storage_data = {"Bob" => {"proj1" => "54%", "proj2" => "26%", "proj3" => "20%"}}
   end
+  def change_quota
+    
+  end 
 end

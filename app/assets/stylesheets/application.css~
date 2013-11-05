@@ -27,6 +27,7 @@ table#viewquota_table {
   padding-bottom: 5px;
   text-align: center; 
   border-spacing: 10px;
+  margin-bottom: 30px;
 }
 table#viewquota_table head{
   font-size: 30px;
@@ -102,4 +103,21 @@ h1.title {
 left: 399px;
 position: absolute;
 top: 9px;
+}
+
+#flash_notice {
+  background: rosybrown;
+  margin: 1em 0;
+  padding: 4px;
+}
+#flash_error {
+  background: pink;
+  margin: 1em 0;
+  padding: 4px;
+}
+#message {
+  background: rosybrown;
+  margin: 1em 0;
+  color: black;
+  padding: 4px;
 }

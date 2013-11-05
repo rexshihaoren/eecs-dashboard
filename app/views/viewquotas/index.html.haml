@@ -1,23 +1,83 @@
-%div#header
-  %img{:src => "/images/iris_logo.png", :id => "iris_logo"}
-  %img{:src => "/images/eecs_logo.png", :id => "eecs_logo"}
-  %img{:src => "/images/berkeley_logo.png", :id => "berkeley_logo"}
+
 
 %h1 #{@storage_data.keys[0]}'s Quota
 
+:javascript 
+  $(function() {
+    var currentquota = [[1246406400000, 14.3, 27.7],[1246492800000, 14.5, 27.8],[1246579200000, 15.5, 29.6],[1246665600000, 16.7, 30.7],[1246752000000, 16.5, 25.0],[1246838400000, 17.8, 25.7]]
+    var averages = [[1246406400000, 21.5],[1246492800000, 22.1],[1246579200000, 23],[1246665600000, 23.8],[1246752000000, 21.4],[1246838400000, 21.3]]
+    var chart = new Highcharts.Chart({
+      chart: {
+        renderTo: "view_quota_chart", 
+       // type: 'arearange'
+      }, 
+      title: { 
+        text: "Past to Current Quota"
+      }, 
+      xAxis: {
+     	text: "date", 
+        type: "datetime",
+        dataTimeLabelFormats:{
+          day: '%e of %b'
+        }
+      }, 
+      yAxis: {
+        title: {
+          text: "Quota"
+        }
+      }, 
+      series: [{
+        name: "Quota", 
+        pointInterval: #{1.day * 1000},
+        pointStart: #{3.weeks.ago.to_i * 1000},
+        data: currentquota
+        //data: [[0,1,2],[1,2,3]]
+      }
+      , 
+      {
+        name: "Max Quota", 
+        data: averages, 
+        pointInterval: #{1.day * 1000},
+        pointStart: #{3.weeks.ago.to_i * 1000}
+      }
+      ]
+    });
+    
+    //alert(chart.series[1]);
+    //series = chart.series[1];
+    //series.hide();
+
+    function myFunction()
+    {
+      var x;
+      var person=prompt("Please enter your name","Harry Potter");
+     }
+
+     function openPopup(link)
+     {
+       link.hide();
+       window.open(link.href,'exam_dialog','toolbar=no,location=no,menubar=no,scrollbars=yes,resizable=no');
+       return false;
+     }
+  });
+
+
+
+%div{:id => "view_quota_chart",  :style => "width:95%; height:50%;"}
+ 	
 %table#viewquota_table
   %head
     %tr{:id => "viewquota_table_header"}
       %td Project Name 
       %td Percent of Quota Used
-      %td Detailed Info
+      %td Change Quota
   %tbody
     - @storage_data.values.each do |storage|
       - storage.each do |proj, percent|
         %tr
           %td= proj
           %td= percent
-          %td= link_to "Detailed Information about #{proj}", "www.google.com"
+          %td= button_to "Change #{proj} Quota", :onclick => "change_quota(proj1)"
           %br/
 
 

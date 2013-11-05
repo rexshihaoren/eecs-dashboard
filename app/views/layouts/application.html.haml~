@@ -1,13 +1,17 @@
 !!! 5
 %html
   %head
-    %title Rotten Potatoes!
+    %title EECS Dashboard
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'jquery-1.10.2'
+    = javascript_include_tag 'highcharts'
     = csrf_meta_tags
+    = render :partial => "header"
 
   %body
-    %h1.title Rotten Potatoes!
+    %h1.title EECS Dashboard
+   
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]

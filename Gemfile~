@@ -25,6 +25,9 @@ group :production do
   gem 'pg'
 end
 
+#var currentquota = [[1246406400000, 14.3, 27.7],[1246492800000, 14.5, 27.8],[1246579200000, 15.5, 29.6],[1246665600000, 16.7, 30.7],[1246752000000, 16.5, 25.0],[1246838400000, 17.8, 25.7]],
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -36,7 +39,6 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
-gem 'rails.js'
 
 # Use unicorn as the web server
 # gem 'unicorn'
