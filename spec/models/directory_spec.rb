@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe Directory do
-	before do {directory=Factory}
+	before do 
+		directory=Factory(:directory)
+	end
 
 	it 'should include directory name and usage and quota' do
-		directory=directorys(:proj1_directory)
+		directory.name='proj1'
 		directory.usage==6
 		directory.quota==10
 	end

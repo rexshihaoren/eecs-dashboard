@@ -15,7 +15,7 @@ describe DirectoryController do
 				before :each do
 					get :change_quota, 'id'=>directory.id, "change_quota" => valid_quota
 				end
-				it "flash message should be 'Submitted!'"
+				it "flash message should be 'Submitted!'" do
 					flash.should == "Submitted"
 				end
 				it "should render detailed_view of that directory" do
@@ -26,8 +26,8 @@ describe DirectoryController do
 				before :each do
 					get :change_quota, 'id'=>directory.id, "change_quota" => invalid_quota
 				end
-				it "flash message should be 'Submitted!'"
-					flash.should == "Invalid Quota"
+				it "flash message should be 'Submitted!'" do
+					flash.should == "Invalid Quota!"
 				end
 				it 'should render detialed_view of that directory' do
 					response.should redirect_to('/detailed_view/'+directory.id.to_s)
