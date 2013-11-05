@@ -1,40 +1,49 @@
 Feature: change quota
- 
   As a user who uses storage services
   So that I can adjust to changes in my project
-  I want to see my storage quota for my project
+  I want to change quota for my project
 
-Background: quotas for the past 12 months have been added to database
+Background: data for proj1 has been added to the database
 
-  Given the following month_quota exist:
-  | month      | usage  | quota |
-  | Jan-2013   | 5      | 10    |
-  | Feb-2013   | 6      | 10    |
-  | Mar-2013   | 1      | 10    |
-  | Apr-2013   | 8      | 10    |
-  | May-2013   | 5      | 10    |
-  | Jun-2013   | 7      | 10    |
-  | July-2013  | 9      | 10    |
-  | Aug-2013   | 2      | 10    |
-  | Sep-2013   | 5      | 10    |
-  | Oct-2013   | 4      | 10    |
-  | Nov-2013   | 3      | 10    |
-  | Dec-2013   | 2      | 10    |
+  Given the following directories exist:
+  | id| name     | usage  | quota|
+  | 1 | Home     | 5      | 10   |
+  | 2 | proj1    | 6      | 10   |
+  | 3 | proj2    | 1      | 10   |
+  | 4 | proj3    | 8      | 10   |
 
-  And  I am on the view_quota page
+  And the following usage_history exist:
+
+  | directory| month| usage    | quota | quota_limit |
+  |   proj1  | 1    | 5        | 10    | 20          |
+  |   proj1  | 2    | 6        | 10    | 20          |
+  |   proj1  | 3    | 1        | 10    | 20          |
+  |   proj1  | 4    | 2        | 10    | 20          |
+  |   proj2  | 1    | 5        | 10    | 20          |
+  |   proj2  | 2    | 6        | 10    | 20          |
+  |   proj3  | 3    | 1        | 10    | 20          |
+  |   proj3  | 4    | 2        | 10    | 20          |
+
+  And the current_month is 4
+
+  And  I am on the detailed view page for proj1
+
 
 Scenario: fill in valid change_quota value (happy path)
   
-  Given I am on the view_quota page
-  When I fill in change_quota field with valid_value
-  And I press 'Submit'
+  When I fill in "change_quota" with "15"
+  And I press "Submit"
   Then I should see "Submitted!"
-  And I should not see "Invalid"
-  And I should see current_month_quota changed to new_value
+  And the "quota" field within "current_month" should contain "15"
+
 
 Scenario: fill in invalid change_quota value (sad path)
   
-  Given I am on the view_quota page
-  When I fill in change_quota field with invalid_value
-  And I press 'Submit'
-  Then I should see "Invalid"
+  When I fill in "change_quota" with "100000"
+  And I press "Submit"
+  Then I should see "Invalid Quota!"
+  And the "quota" field within "current_month" should contain "10"
+
+
+  
+  
