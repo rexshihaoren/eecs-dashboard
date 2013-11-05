@@ -1,7 +1,7 @@
 #EECS-Dashboard
 
 ##Goal
-Fix up and create a self service dashboard for EECS Department of UC Berkeley (IRIS www.iris.eecs.berkeley.edu).
+Fix up and create a self service dashboard for EECS Department of UC Berkeley (IRIS https://iris.eecs.berkeley.edu/).
 
 ###Features: 
 ####1. View quota
