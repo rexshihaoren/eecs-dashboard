@@ -24,7 +24,6 @@
       yAxis: {
         type: 'logarithmic',
         title: {
-          
           text: "Bytes", 
           min: 0
         }
@@ -63,11 +62,19 @@
   %tbody
     - @storage_data.values.each do |storage|
       - storage.each do |proj, percent|
-        %tr
-          %td= button_to "View #{proj} Quota", :onclick => "viewquotas({:proj => proj1})"
-          %td= percent
-          %td= button_to "Change #{proj} Quota", :onclick => "change_quota(proj1)"
-          %br/
+        - if proj == @current_directory
+          %tr{:class => 'hilite'}
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= percent
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+          %br/ 
+        - else 
+          %tr
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= percent
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %br/
+          
 
 
 =link_to "Back to DashBoard", '/dashboard'

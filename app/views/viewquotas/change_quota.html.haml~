@@ -1,8 +1,11 @@
 
 
-= form_tag "/viewquotas/", :method => :get, :id => "change_max_quota_form" do
-  = label_tag "Change Your Maximum Quota" 
-  %br/
-  = text_field_tag "quota_name", "Current Quota", :value => "100"
-  = submit_tag "Change Max Quota", :id => "change_max_quota_button"
-=link_to "Back", "/viewquotas/", :id => "change_max_quota_back"
+%div{:id => "change_quota_div"}
+  = form_tag "/viewquotas/", :method => :get, :id => "change_max_quota_form" do
+    = label_tag "Change #{@model.directory} Maximum Quota" 
+    %br/
+    = hidden_field_tag :new_model, @model
+    = hidden_field_tag :current_directory, @model.directory
+    = text_field_tag "quota_name", "Current Quota", :value => @model.max
+    = submit_tag "Change Max Quota", :id => "change_max_quota_button"
+  =link_to "Back", viewquotas_path(), :id => "change_max_quota_back" 
