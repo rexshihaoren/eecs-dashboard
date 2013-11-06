@@ -1,0 +1,3 @@
+= form_tag "/index", :method => :post do
+  = text_field_tag "accountName", "" 
+  = submit_tag "Submit"

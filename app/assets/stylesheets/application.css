@@ -104,3 +104,20 @@ left: 399px;
 position: absolute;
 top: 9px;
 }
+
+#flash_notice {
+  background: rosybrown;
+  margin: 1em 0;
+  padding: 4px;
+}
+#flash_error {
+  background: pink;
+  margin: 1em 0;
+  padding: 4px;
+}
+#notice {
+  background: rosybrown;
+  margin: 1em 0;
+  color: black;
+  padding: 4px;
+}
