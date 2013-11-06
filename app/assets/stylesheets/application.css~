@@ -115,9 +115,21 @@ top: 9px;
   margin: 1em 0;
   padding: 4px;
 }
-#message {
+#notice {
   background: rosybrown;
   margin: 1em 0;
   color: black;
   padding: 4px;
+}
+
+#change_max_quota_form{
+  width:20%; 
+  margin:0 auto;
+}
+
+#change_max_quota_back{
+ width:20%; 
+  margin:0 auto;
+
+
 }
