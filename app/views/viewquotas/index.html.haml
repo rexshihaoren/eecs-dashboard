@@ -1,6 +1,6 @@
 
 
-%h1 #{@storage_data.keys[0]}'s Quota
+%h1 #{@user_name}'s Quota
 
 :javascript 
   $(function() {
@@ -22,8 +22,9 @@
         }
       }, 
       yAxis: {
+        type: 'logarithmic',
         title: {
-          type: 'logarithmic',
+          
           text: "Bytes", 
           min: 0
         }
@@ -32,13 +33,12 @@
         name: "Quota", 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000},
-        data: currentquota
-        //data: [[0,1,2],[1,2,3]]
+        data: #{@current_values}
       }
       , 
       {
         name: "Max Quota", 
-        data: averages, 
+        data: #{@max_values}, 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000}
       }

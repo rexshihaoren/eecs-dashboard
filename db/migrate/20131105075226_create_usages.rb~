@@ -11,6 +11,6 @@ class CreateUsages < ActiveRecord::Migration
   end
 
   self.up
-    add_column :usages, :max, :integer
-  end
+  add_column :usages, :max, :integer
+end
 end

@@ -1,4 +1,4 @@
-class Quota < ActiveRecord::Base/Q
+getclass Quota < ActiveRecord::Base/Q
   attr_accessible :directory, :quota, :user
   
 
