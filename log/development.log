@@ -8500,6 +8500,7 @@ Served asset /jquery-1.10.2.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-06 13:40:59 -0800
 Served asset /application.js - 304 Not Modified (6ms)
+<<<<<<< HEAD
 
 
 Started GET "/" for 127.0.0.1 at 2013-11-07 15:43:16 -0800
@@ -8691,3 +8692,5 @@ SyntaxError (/home/saasbook/Dropbox/CS 169/proj/eecs-dashboard/app/controllers/v
   Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
   Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
   Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.0ms)
+=======
+>>>>>>> c5a9a57b2a3b5765fb411cda9e13f811c222c6d4
