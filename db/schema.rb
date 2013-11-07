@@ -18,14 +18,17 @@ ActiveRecord::Schema.define(:version => 20131105075226) do
     t.string   "rating"
     t.text     "description"
     t.datetime "release_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "quota", :force => true do |t|
     t.string   "user"
     t.integer  "quota"
     t.string   "directory"
+    t.integer  "usage"
+    t.string   "date"
+    t.string   "proj"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -35,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20131105075226) do
     t.string   "directory"
     t.string   "date"
     t.integer  "usage"
+    t.integer  "max"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

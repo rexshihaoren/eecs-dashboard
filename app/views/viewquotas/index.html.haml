@@ -1,11 +1,11 @@
 
 
-%h1 #{@storage_data.keys[0]}'s Quota
+%h1 #{@user_name}'s Quota
 
 :javascript 
   $(function() {
-    var currentquota = [[1246406400000, 14.3, 27.7],[1246492800000, 14.5, 27.8],[1246579200000, 15.5, 29.6],[1246665600000, 16.7, 30.7],[1246752000000, 16.5, 25.0],[1246838400000, 17.8, 25.7]]
-    var averages = [[1246406400000, 21.5],[1246492800000, 22.1],[1246579200000, 23],[1246665600000, 23.8],[1246752000000, 21.4],[1246838400000, 21.3]]
+    var currentquota = [[1246406400000, 1224.3, 27.7],[1246492800000, 143.5, 27.8],[1246579200000, 125.5, 29.6],[1246665600000, 16.7, 30.7],[1246752000000, 11116.5, 25.0],[1246838400000, 17.8, 25.7]]
+    var averages = [[1246406400000, 251.5],[1246492800000, 22.1],[1246579200000, 2993],[1246665600000, 223.8],[1246752000000, 21.4],[1246838400000, 21.3]]
     var chart = new Highcharts.Chart({
       chart: {
         renderTo: "view_quota_chart", 
@@ -22,21 +22,22 @@
         }
       }, 
       yAxis: {
+        type: 'logarithmic',
         title: {
-          text: "Quota"
+          text: "Bytes", 
+          min: 0
         }
       }, 
       series: [{
         name: "Quota", 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000},
-        data: currentquota
-        //data: [[0,1,2],[1,2,3]]
+        data: #{@current_values}
       }
       , 
       {
         name: "Max Quota", 
-        data: averages, 
+        data: #{@max_values}, 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000}
       }
@@ -46,19 +47,6 @@
     //alert(chart.series[1]);
     //series = chart.series[1];
     //series.hide();
-
-    function myFunction()
-    {
-      var x;
-      var person=prompt("Please enter your name","Harry Potter");
-     }
-
-     function openPopup(link)
-     {
-       link.hide();
-       window.open(link.href,'exam_dialog','toolbar=no,location=no,menubar=no,scrollbars=yes,resizable=no');
-       return false;
-     }
   });
 
 
@@ -74,11 +62,19 @@
   %tbody
     - @storage_data.values.each do |storage|
       - storage.each do |proj, percent|
-        %tr
-          %td= proj
-          %td= percent
-          %td= button_to "Change #{proj} Quota", :onclick => "change_quota(proj1)"
-          %br/
+        - if proj == @current_directory
+          %tr{:class => 'hilite'}
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= percent
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+          %br/ 
+        - else 
+          %tr
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= percent
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %br/
+          
 
 
 =link_to "Back to DashBoard", '/dashboard'

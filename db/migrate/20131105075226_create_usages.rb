@@ -5,8 +5,9 @@ class CreateUsages < ActiveRecord::Migration
       t.string :directory
       t.string :date
       t.integer :usage
-
+      t.integer :max
       t.timestamps
     end
   end
+
 end

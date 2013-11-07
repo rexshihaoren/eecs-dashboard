@@ -1,8 +1,11 @@
-%div#header
-  %img{:src => "/images/iris_logo.png", :id => "iris_logo"}
-  %img{:src => "/images/eecs_logo.png", :id => "eecs_logo"}
-  %img{:src => "/images/berkeley_logo.png", :id => "berkeley_logo"}
 
-= form_tag "/viewquotas/", :method => :get do
-  = text_field_tag "quota_name", "" 
-  = submit_tag "Submit"
+
+%div{:id => "change_quota_div"}
+  = form_tag "/viewquotas/", :method => :get, :id => "change_max_quota_form" do
+    = label_tag "Change #{@model.directory} Maximum Quota" 
+    %br/
+    = hidden_field_tag :new_model, @model
+    = hidden_field_tag :current_directory, @model.directory
+    = text_field_tag "quota_name", "Current Quota", :value => @model.max
+    = submit_tag "Change Max Quota", :id => "change_max_quota_button"
+  =link_to "Back", viewquotas_path(), :id => "change_max_quota_back" 

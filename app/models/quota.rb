@@ -1,8 +1,11 @@
-getclass Quota < ActiveRecord::Base/Q
-  attr_accessible :directory, :quota, :user
-  
+class Quota < ActiveRecord::Base
+  attr_accessible :directory, :quota, :user, :proj, :date, :usage
 
-  def self.getQuotaforUserDirectory(user, directory)
-	return Quota.where(user: user, directory: directory)
+  def self.getHistory(user, directory, proj = nil)
+	return Quota.where(user: user, directory: directory, proj: proj).order(:date)
+  end
+  def changeQuota(quota)
+	self.quota = quota
+	self.save
   end
 end
