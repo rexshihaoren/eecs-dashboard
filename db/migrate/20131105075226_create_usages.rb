@@ -9,11 +9,4 @@ class CreateUsages < ActiveRecord::Migration
       t.timestamps
     end
   end
-
-<<<<<<< HEAD
-=======
-  self.up
-    add_column :usages, :max, :integer
-  end
->>>>>>> c5a9a57b2a3b5765fb411cda9e13f811c222c6d4
 end
