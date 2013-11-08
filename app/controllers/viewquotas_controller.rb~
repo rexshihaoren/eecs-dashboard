@@ -68,6 +68,8 @@ class ViewquotasController < ApplicationController
         new_model.save!
         session[:current_directory] = params[:current_directory]
 	flash.now[:notice] = ("#{new_model.directory} Quota was successfully changed")
+        flash.keep
+        redirect_to viewquotas_path({:current_directory => session[:current_directory]})
     end 
   end
  
