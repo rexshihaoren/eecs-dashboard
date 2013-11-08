@@ -9,8 +9,4 @@ class CreateUsages < ActiveRecord::Migration
       t.timestamps
     end
   end
-
-  self.up
-    add_column :usages, :max, :integer
-  end
 end

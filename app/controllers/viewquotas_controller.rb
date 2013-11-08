@@ -11,13 +11,10 @@ class ViewquotasController < ApplicationController
     puts "Params= #{params.inspect}"
     puts "Current directory = #{params[:current_directory]}"
     names = Usage.find_all_by_user(session[:user_name])
+    puts "All usage objects #{Usage.all}"
     check_change_quota
     set_current_directory(names)
-   
-    
-
-    
-   
+  
    
     counter = 6
     hash = {}
