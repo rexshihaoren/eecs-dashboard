@@ -11,24 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105075226) do
+ActiveRecord::Schema.define(:version => 20131106042151) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
     t.string   "rating"
     t.text     "description"
     t.datetime "release_date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "quota", :force => true do |t|
     t.string   "user"
     t.integer  "quota"
     t.string   "directory"
-    t.integer  "usage"
-    t.string   "date"
-    t.string   "proj"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -38,9 +35,10 @@ ActiveRecord::Schema.define(:version => 20131105075226) do
     t.string   "directory"
     t.string   "date"
     t.integer  "usage"
-    t.integer  "max"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "columnname"
+    t.integer  "max"
   end
 
 end
