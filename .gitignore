@@ -7,7 +7,6 @@ tmp/pids/server.pid
 
 *.log
 
-log/development.log
 
 *.log
 
@@ -17,6 +16,3 @@ log/test.log
 
 *.log
 
-db/development.sqlite3
-
-db/development.sqlite3
