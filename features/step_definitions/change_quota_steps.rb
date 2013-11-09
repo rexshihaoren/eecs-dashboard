@@ -1,12 +1,7 @@
-Then /I should see a detailed view of the quota history$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^the following quota exist:$/ do |table|
+  Quota.create!(table.hashes)
 end
 
-Given /the current_month is (\d+)$/ do |m|
-	Time.now.month==m
+Given /^the following usages exist:$/ do |table|
+  Usage.create!(table.hashes)
 end
-
-Given /the following usage_history exist:$/ do |usage|
-	Usage.create!(usage.hashes)
-end
-
