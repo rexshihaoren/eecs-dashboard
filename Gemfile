@@ -17,6 +17,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'railroady'
   gem 'factory_girl'
+  gem 'taps'
 end
 
 group :test do
@@ -25,7 +26,6 @@ group :test do
 end
 group :production do
   gem 'pg'
-  gem 'taps'
 end
 
 
