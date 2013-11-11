@@ -4,10 +4,9 @@ class ViewquotasController < ApplicationController
     @max_values = []
     @current_values = []
     @current_directory = nil
+    set_user_name
     @user_name = session[:user_name]
 
-    set_user_name
-   
     puts "Params= #{params.inspect}"
     puts "Current directory = #{params[:current_directory]}"
     names = Usage.find_all_by_user(session[:user_name])
@@ -15,7 +14,6 @@ class ViewquotasController < ApplicationController
     check_change_quota
     set_current_directory(names)
   
-   
     counter = 6
     hash = {}
     names.each do |usage|
@@ -72,6 +70,10 @@ class ViewquotasController < ApplicationController
  
   def change_quota
     model = Usage.get_model_by_user_and_proj(params[:user], params[:modifying_directory])
+    puts "AAAAAAAAAAAAAAAAAAA"
+    puts params[:modifying_directory]
+    puts params[:user]
+    puts model
     @model = model[model.length - 1]
     puts "Model #{@model.inspect}"
   end 
