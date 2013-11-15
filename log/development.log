@@ -9376,3 +9376,272 @@ WARNING: Can't mass-assign protected attributes: date, proj, usage
   [1m[36m (10.5ms)[0m  [1mcommit transaction[0m
 >>>>>>> 282a2966e98dd8cd3b63472c85dbf82956c6c209
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (4.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+Migrating to AddRateColumnToUsage (20131115214317)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "usages" ADD "rate" integer
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131115214317')[0m
+  [1m[35m (136.6ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddRateColumnToUsage (20131115214317)
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TEMPORARY TABLE "altered_usages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "directory" varchar(255), "date" varchar(255), "usage" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "columnname" integer, "max" integer, "rate" integer) [0m
+  [1m[35m (0.6ms)[0m  SELECT * FROM "usages"
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (2, 'fox', 'home-eecs', '10.24.14', 491920000, '2013-11-06 00:28:58.324969', '2013-11-06 00:28:58.324969', NULL, NULL, NULL)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (3, 'pattrsn', 'home-eecs', '10.24.14', 249204449, '2013-11-06 00:29:17.554287', '2013-11-06 00:29:17.554287', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (4, 'fraser', 'home-eecs', '10.24.14', 219780484, '2013-11-06 00:29:39.818551', '2013-11-06 00:29:39.818551', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (5, 'bh', 'home-eecs', '10.24.14', 74667660, '2013-11-06 00:29:57.853794', '2013-11-06 00:29:57.853794', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (6, 'ddgarcia', 'home-eecs', '10.24.14', 73701028, '2013-11-06 00:30:16.191290', '2013-11-06 00:30:16.191290', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (7, 'larsrohr', 'home-eecs', '10.24.14', 889416, '2013-11-06 00:30:31.423165', '2013-11-06 00:30:31.423165', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (9, 'fox', 'home-eecs', '10.24.13', 382925800, '2013-11-06 00:32:26.184631', '2013-11-06 00:32:26.184631', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (10, 'pattrsn', 'home-eecs', '10.24.13', 368225128, '2013-11-06 00:32:43.978917', '2013-11-06 00:32:43.978917', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (11, 'fraser', 'home-eecs', '10.24.13', 219780484, '2013-11-06 00:33:26.031429', '2013-11-06 00:33:26.031429', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (12, 'bh', 'home-eecs', '10.24.13', 74667660, '2013-11-06 00:33:51.423682', '2013-11-06 00:33:51.423682', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (13, 'ddgarcia', 'home-eecs', '10.24.13', 73701028, '2013-11-06 00:34:09.519715', '2013-11-06 00:34:09.519715', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (14, 'larsrohr', 'home-eecs', '10.24.13', 889416, '2013-11-06 00:35:39.235287', '2013-11-06 00:35:39.235287', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (15, 'aculich', 'proj1', '10.23.14', 1000, '2013-11-06 03:57:08.780317', '2013-11-06 05:06:06.036817', NULL, 2000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (16, 'aculich', 'home-eecs', '10.22.14', 53910290, '2013-11-06 03:57:16.797499', '2013-11-06 04:29:00.373212', NULL, 60000000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (17, 'aculich', 'proj2', '10.21.14', 51910290, '2013-11-06 03:57:27.468870', '2013-11-06 21:17:18.633667', NULL, 60000010, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (18, 'aculich', 'proj3', '10.20.14', 50910290, '2013-11-06 03:57:41.061628', '2013-11-06 21:18:14.280088', NULL, 10000000, NULL)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (19, 'aculich', 'home-eecs', '10.19.14', 50910290, '2013-11-06 03:59:35.796297', '2013-11-06 04:29:32.500666', NULL, 60000000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (20, 'aculich', 'eecs', '10.18.14', 53910290, '2013-11-06 04:00:25.526739', '2013-11-06 05:04:59.461913', NULL, 60000000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (21, 'aculich', 'home-eecs', '10.23.14', 3910290, '2013-11-06 17:20:38.696188', '2013-11-06 17:21:41.686386', NULL, 4000000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (22, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:20:44.602895', '2013-11-06 17:21:54.375443', NULL, 400000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (23, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:22:19.390354', '2013-11-06 17:22:19.390354', NULL, 950000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (24, 'aculich', 'home-eecs', '10.23.14', 91029, '2013-11-06 17:22:52.687297', '2013-11-07 23:08:37.130940', NULL, 955500, NULL)
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (25, 'aculich', 'proj1', '10.23.14', 81029, '2013-11-06 17:24:30.592837', '2013-11-06 17:27:53.690294', NULL, 85000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (26, 'aculich', 'proj1', '10.23.14', 831029, '2013-11-06 17:24:38.440723', '2013-11-06 17:27:59.843320', NULL, 835000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (27, 'aculich', 'proj1', '10.23.14', 8310290, '2013-11-06 17:24:45.330241', '2013-11-06 17:28:33.833847', NULL, 8350000, NULL)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (28, 'aculich', 'proj3', '10.23.14', 3310290, '2013-11-06 17:25:07.458038', '2013-11-06 17:25:07.458038', NULL, 3350000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (29, 'aculich', 'proj3', '10.23.14', 331020, '2013-11-06 17:25:16.834226', '2013-11-06 17:25:16.834226', NULL, 335000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (30, 'aculich', 'proj3', '10.23.14', 33120, '2013-11-06 17:25:23.429979', '2013-11-06 17:25:23.429979', NULL, 33500, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (31, 'aculich', 'proj3', '10.23.14', 120, '2013-11-06 17:25:29.730738', '2013-11-06 21:23:27.048510', NULL, 33559, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (32, 'aculich', 'proj2', '10.23.14', 2120, '2013-11-06 17:25:42.115947', '2013-11-06 17:25:42.115947', NULL, 33500, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (33, 'aculich', 'proj2', '10.23.14', 21200, '2013-11-06 17:25:49.042488', '2013-11-06 17:25:49.042488', NULL, 33500, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (34, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:25:53.179257', '2013-11-06 17:25:53.179257', NULL, 33500, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (35, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:26:04.410465', '2013-11-07 04:38:55.562584', NULL, 635800, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (36, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:51.907841', '2013-11-06 17:26:51.907841', NULL, 1024, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (37, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:57.854420', '2013-11-06 17:26:57.854420', NULL, 2048, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (38, 'aculich', 'eecs', '10.23.14', 10240, '2013-11-06 17:27:04.605675', '2013-11-06 17:27:04.605675', NULL, 20480, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (39, 'aculich', 'eecs', '10.23.14', 30240, '2013-11-06 17:27:10.388725', '2013-11-06 17:27:10.388725', NULL, 40480, NULL)[0m
+  [1m[35m (0.8ms)[0m  DROP TABLE "usages"
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "usages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "directory" varchar(255), "date" varchar(255), "usage" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "columnname" integer, "max" integer) [0m
+  [1m[35m (0.5ms)[0m  SELECT * FROM "altered_usages"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (2, 'fox', 'home-eecs', '10.24.14', 491920000, '2013-11-06 00:28:58.324969', '2013-11-06 00:28:58.324969', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (3, 'pattrsn', 'home-eecs', '10.24.14', 249204449, '2013-11-06 00:29:17.554287', '2013-11-06 00:29:17.554287', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (4, 'fraser', 'home-eecs', '10.24.14', 219780484, '2013-11-06 00:29:39.818551', '2013-11-06 00:29:39.818551', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (5, 'bh', 'home-eecs', '10.24.14', 74667660, '2013-11-06 00:29:57.853794', '2013-11-06 00:29:57.853794', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (6, 'ddgarcia', 'home-eecs', '10.24.14', 73701028, '2013-11-06 00:30:16.191290', '2013-11-06 00:30:16.191290', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (7, 'larsrohr', 'home-eecs', '10.24.14', 889416, '2013-11-06 00:30:31.423165', '2013-11-06 00:30:31.423165', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (9, 'fox', 'home-eecs', '10.24.13', 382925800, '2013-11-06 00:32:26.184631', '2013-11-06 00:32:26.184631', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (10, 'pattrsn', 'home-eecs', '10.24.13', 368225128, '2013-11-06 00:32:43.978917', '2013-11-06 00:32:43.978917', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (11, 'fraser', 'home-eecs', '10.24.13', 219780484, '2013-11-06 00:33:26.031429', '2013-11-06 00:33:26.031429', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (12, 'bh', 'home-eecs', '10.24.13', 74667660, '2013-11-06 00:33:51.423682', '2013-11-06 00:33:51.423682', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (13, 'ddgarcia', 'home-eecs', '10.24.13', 73701028, '2013-11-06 00:34:09.519715', '2013-11-06 00:34:09.519715', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (14, 'larsrohr', 'home-eecs', '10.24.13', 889416, '2013-11-06 00:35:39.235287', '2013-11-06 00:35:39.235287', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (15, 'aculich', 'proj1', '10.23.14', 1000, '2013-11-06 03:57:08.780317', '2013-11-06 05:06:06.036817', NULL, 2000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (16, 'aculich', 'home-eecs', '10.22.14', 53910290, '2013-11-06 03:57:16.797499', '2013-11-06 04:29:00.373212', NULL, 60000000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (17, 'aculich', 'proj2', '10.21.14', 51910290, '2013-11-06 03:57:27.468870', '2013-11-06 21:17:18.633667', NULL, 60000010)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (18, 'aculich', 'proj3', '10.20.14', 50910290, '2013-11-06 03:57:41.061628', '2013-11-06 21:18:14.280088', NULL, 10000000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (19, 'aculich', 'home-eecs', '10.19.14', 50910290, '2013-11-06 03:59:35.796297', '2013-11-06 04:29:32.500666', NULL, 60000000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (20, 'aculich', 'eecs', '10.18.14', 53910290, '2013-11-06 04:00:25.526739', '2013-11-06 05:04:59.461913', NULL, 60000000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (21, 'aculich', 'home-eecs', '10.23.14', 3910290, '2013-11-06 17:20:38.696188', '2013-11-06 17:21:41.686386', NULL, 4000000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (22, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:20:44.602895', '2013-11-06 17:21:54.375443', NULL, 400000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (23, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:22:19.390354', '2013-11-06 17:22:19.390354', NULL, 950000)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (24, 'aculich', 'home-eecs', '10.23.14', 91029, '2013-11-06 17:22:52.687297', '2013-11-07 23:08:37.130940', NULL, 955500)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (25, 'aculich', 'proj1', '10.23.14', 81029, '2013-11-06 17:24:30.592837', '2013-11-06 17:27:53.690294', NULL, 85000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (26, 'aculich', 'proj1', '10.23.14', 831029, '2013-11-06 17:24:38.440723', '2013-11-06 17:27:59.843320', NULL, 835000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (27, 'aculich', 'proj1', '10.23.14', 8310290, '2013-11-06 17:24:45.330241', '2013-11-06 17:28:33.833847', NULL, 8350000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (28, 'aculich', 'proj3', '10.23.14', 3310290, '2013-11-06 17:25:07.458038', '2013-11-06 17:25:07.458038', NULL, 3350000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (29, 'aculich', 'proj3', '10.23.14', 331020, '2013-11-06 17:25:16.834226', '2013-11-06 17:25:16.834226', NULL, 335000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (30, 'aculich', 'proj3', '10.23.14', 33120, '2013-11-06 17:25:23.429979', '2013-11-06 17:25:23.429979', NULL, 33500)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (31, 'aculich', 'proj3', '10.23.14', 120, '2013-11-06 17:25:29.730738', '2013-11-06 21:23:27.048510', NULL, 33559)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (32, 'aculich', 'proj2', '10.23.14', 2120, '2013-11-06 17:25:42.115947', '2013-11-06 17:25:42.115947', NULL, 33500)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (33, 'aculich', 'proj2', '10.23.14', 21200, '2013-11-06 17:25:49.042488', '2013-11-06 17:25:49.042488', NULL, 33500)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (34, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:25:53.179257', '2013-11-06 17:25:53.179257', NULL, 33500)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (35, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:26:04.410465', '2013-11-07 04:38:55.562584', NULL, 635800)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (36, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:51.907841', '2013-11-06 17:26:51.907841', NULL, 1024)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (37, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:57.854420', '2013-11-06 17:26:57.854420', NULL, 2048)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (38, 'aculich', 'eecs', '10.23.14', 10240, '2013-11-06 17:27:04.605675', '2013-11-06 17:27:04.605675', NULL, 20480)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (39, 'aculich', 'eecs', '10.23.14', 30240, '2013-11-06 17:27:10.388725', '2013-11-06 17:27:10.388725', NULL, 40480)[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "altered_usages"
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20131115214317'[0m
+  [1m[35m (39.5ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (3.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+Migrating to AddRateColumnToUsage (20131115214317)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "usages" ADD "rate" integer
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131115214317')[0m
+  [1m[35m (129.6ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+Migrating to AddRateColumnToUsage (20131115214751)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "usages" ADD "rate" float
+SQLite3::SQLException: duplicate column name: rate: ALTER TABLE "usages" ADD "rate" float
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+Migrating to AddRateColumnToUsage (20131115214751)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "usages" ADD "rate" float
+SQLite3::SQLException: duplicate column name: rate: ALTER TABLE "usages" ADD "rate" float
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (3.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (3.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+  [1m[35m (0.4ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+Migrating to RemoveRateFromUsages (20131115215451)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  CREATE TEMPORARY TABLE "altered_usages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "directory" varchar(255), "date" varchar(255), "usage" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "columnname" integer, "max" integer, "rate" integer) 
+  [1m[36m (0.6ms)[0m  [1mSELECT * FROM "usages"[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (2, 'fox', 'home-eecs', '10.24.14', 491920000, '2013-11-06 00:28:58.324969', '2013-11-06 00:28:58.324969', NULL, NULL, NULL)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (3, 'pattrsn', 'home-eecs', '10.24.14', 249204449, '2013-11-06 00:29:17.554287', '2013-11-06 00:29:17.554287', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (4, 'fraser', 'home-eecs', '10.24.14', 219780484, '2013-11-06 00:29:39.818551', '2013-11-06 00:29:39.818551', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (5, 'bh', 'home-eecs', '10.24.14', 74667660, '2013-11-06 00:29:57.853794', '2013-11-06 00:29:57.853794', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (6, 'ddgarcia', 'home-eecs', '10.24.14', 73701028, '2013-11-06 00:30:16.191290', '2013-11-06 00:30:16.191290', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (7, 'larsrohr', 'home-eecs', '10.24.14', 889416, '2013-11-06 00:30:31.423165', '2013-11-06 00:30:31.423165', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (9, 'fox', 'home-eecs', '10.24.13', 382925800, '2013-11-06 00:32:26.184631', '2013-11-06 00:32:26.184631', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (10, 'pattrsn', 'home-eecs', '10.24.13', 368225128, '2013-11-06 00:32:43.978917', '2013-11-06 00:32:43.978917', NULL, NULL, NULL)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (11, 'fraser', 'home-eecs', '10.24.13', 219780484, '2013-11-06 00:33:26.031429', '2013-11-06 00:33:26.031429', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (12, 'bh', 'home-eecs', '10.24.13', 74667660, '2013-11-06 00:33:51.423682', '2013-11-06 00:33:51.423682', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (13, 'ddgarcia', 'home-eecs', '10.24.13', 73701028, '2013-11-06 00:34:09.519715', '2013-11-06 00:34:09.519715', NULL, NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (14, 'larsrohr', 'home-eecs', '10.24.13', 889416, '2013-11-06 00:35:39.235287', '2013-11-06 00:35:39.235287', NULL, NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (15, 'aculich', 'proj1', '10.23.14', 1000, '2013-11-06 03:57:08.780317', '2013-11-06 05:06:06.036817', NULL, 2000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (16, 'aculich', 'home-eecs', '10.22.14', 53910290, '2013-11-06 03:57:16.797499', '2013-11-06 04:29:00.373212', NULL, 60000000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (17, 'aculich', 'proj2', '10.21.14', 51910290, '2013-11-06 03:57:27.468870', '2013-11-06 21:17:18.633667', NULL, 60000010, NULL)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (18, 'aculich', 'proj3', '10.20.14', 50910290, '2013-11-06 03:57:41.061628', '2013-11-06 21:18:14.280088', NULL, 10000000, NULL)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (19, 'aculich', 'home-eecs', '10.19.14', 50910290, '2013-11-06 03:59:35.796297', '2013-11-06 04:29:32.500666', NULL, 60000000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (20, 'aculich', 'eecs', '10.18.14', 53910290, '2013-11-06 04:00:25.526739', '2013-11-06 05:04:59.461913', NULL, 60000000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (21, 'aculich', 'home-eecs', '10.23.14', 3910290, '2013-11-06 17:20:38.696188', '2013-11-06 17:21:41.686386', NULL, 4000000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (22, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:20:44.602895', '2013-11-06 17:21:54.375443', NULL, 400000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (23, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:22:19.390354', '2013-11-06 17:22:19.390354', NULL, 950000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (24, 'aculich', 'home-eecs', '10.23.14', 91029, '2013-11-06 17:22:52.687297', '2013-11-07 23:08:37.130940', NULL, 955500, NULL)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (25, 'aculich', 'proj1', '10.23.14', 81029, '2013-11-06 17:24:30.592837', '2013-11-06 17:27:53.690294', NULL, 85000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (26, 'aculich', 'proj1', '10.23.14', 831029, '2013-11-06 17:24:38.440723', '2013-11-06 17:27:59.843320', NULL, 835000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (27, 'aculich', 'proj1', '10.23.14', 8310290, '2013-11-06 17:24:45.330241', '2013-11-06 17:28:33.833847', NULL, 8350000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (28, 'aculich', 'proj3', '10.23.14', 3310290, '2013-11-06 17:25:07.458038', '2013-11-06 17:25:07.458038', NULL, 3350000, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (29, 'aculich', 'proj3', '10.23.14', 331020, '2013-11-06 17:25:16.834226', '2013-11-06 17:25:16.834226', NULL, 335000, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (30, 'aculich', 'proj3', '10.23.14', 33120, '2013-11-06 17:25:23.429979', '2013-11-06 17:25:23.429979', NULL, 33500, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (31, 'aculich', 'proj3', '10.23.14', 120, '2013-11-06 17:25:29.730738', '2013-11-06 21:23:27.048510', NULL, 33559, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (32, 'aculich', 'proj2', '10.23.14', 2120, '2013-11-06 17:25:42.115947', '2013-11-06 17:25:42.115947', NULL, 33500, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (33, 'aculich', 'proj2', '10.23.14', 21200, '2013-11-06 17:25:49.042488', '2013-11-06 17:25:49.042488', NULL, 33500, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (34, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:25:53.179257', '2013-11-06 17:25:53.179257', NULL, 33500, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (35, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:26:04.410465', '2013-11-07 04:38:55.562584', NULL, 635800, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (36, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:51.907841', '2013-11-06 17:26:51.907841', NULL, 1024, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (37, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:57.854420', '2013-11-06 17:26:57.854420', NULL, 2048, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (38, 'aculich', 'eecs', '10.23.14', 10240, '2013-11-06 17:27:04.605675', '2013-11-06 17:27:04.605675', NULL, 20480, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max","rate") VALUES (39, 'aculich', 'eecs', '10.23.14', 30240, '2013-11-06 17:27:10.388725', '2013-11-06 17:27:10.388725', NULL, 40480, NULL)
+  [1m[36m (0.6ms)[0m  [1mDROP TABLE "usages"[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "usages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "directory" varchar(255), "date" varchar(255), "usage" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "columnname" integer, "max" integer) 
+  [1m[36m (0.5ms)[0m  [1mSELECT * FROM "altered_usages"[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (2, 'fox', 'home-eecs', '10.24.14', 491920000, '2013-11-06 00:28:58.324969', '2013-11-06 00:28:58.324969', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (3, 'pattrsn', 'home-eecs', '10.24.14', 249204449, '2013-11-06 00:29:17.554287', '2013-11-06 00:29:17.554287', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (4, 'fraser', 'home-eecs', '10.24.14', 219780484, '2013-11-06 00:29:39.818551', '2013-11-06 00:29:39.818551', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (5, 'bh', 'home-eecs', '10.24.14', 74667660, '2013-11-06 00:29:57.853794', '2013-11-06 00:29:57.853794', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (6, 'ddgarcia', 'home-eecs', '10.24.14', 73701028, '2013-11-06 00:30:16.191290', '2013-11-06 00:30:16.191290', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (7, 'larsrohr', 'home-eecs', '10.24.14', 889416, '2013-11-06 00:30:31.423165', '2013-11-06 00:30:31.423165', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (9, 'fox', 'home-eecs', '10.24.13', 382925800, '2013-11-06 00:32:26.184631', '2013-11-06 00:32:26.184631', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (10, 'pattrsn', 'home-eecs', '10.24.13', 368225128, '2013-11-06 00:32:43.978917', '2013-11-06 00:32:43.978917', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (11, 'fraser', 'home-eecs', '10.24.13', 219780484, '2013-11-06 00:33:26.031429', '2013-11-06 00:33:26.031429', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (12, 'bh', 'home-eecs', '10.24.13', 74667660, '2013-11-06 00:33:51.423682', '2013-11-06 00:33:51.423682', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (13, 'ddgarcia', 'home-eecs', '10.24.13', 73701028, '2013-11-06 00:34:09.519715', '2013-11-06 00:34:09.519715', NULL, NULL)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (14, 'larsrohr', 'home-eecs', '10.24.13', 889416, '2013-11-06 00:35:39.235287', '2013-11-06 00:35:39.235287', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (15, 'aculich', 'proj1', '10.23.14', 1000, '2013-11-06 03:57:08.780317', '2013-11-06 05:06:06.036817', NULL, 2000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (16, 'aculich', 'home-eecs', '10.22.14', 53910290, '2013-11-06 03:57:16.797499', '2013-11-06 04:29:00.373212', NULL, 60000000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (17, 'aculich', 'proj2', '10.21.14', 51910290, '2013-11-06 03:57:27.468870', '2013-11-06 21:17:18.633667', NULL, 60000010)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (18, 'aculich', 'proj3', '10.20.14', 50910290, '2013-11-06 03:57:41.061628', '2013-11-06 21:18:14.280088', NULL, 10000000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (19, 'aculich', 'home-eecs', '10.19.14', 50910290, '2013-11-06 03:59:35.796297', '2013-11-06 04:29:32.500666', NULL, 60000000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (20, 'aculich', 'eecs', '10.18.14', 53910290, '2013-11-06 04:00:25.526739', '2013-11-06 05:04:59.461913', NULL, 60000000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (21, 'aculich', 'home-eecs', '10.23.14', 3910290, '2013-11-06 17:20:38.696188', '2013-11-06 17:21:41.686386', NULL, 4000000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (22, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:20:44.602895', '2013-11-06 17:21:54.375443', NULL, 400000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (23, 'aculich', 'home-eecs', '10.23.14', 910290, '2013-11-06 17:22:19.390354', '2013-11-06 17:22:19.390354', NULL, 950000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (24, 'aculich', 'home-eecs', '10.23.14', 91029, '2013-11-06 17:22:52.687297', '2013-11-07 23:08:37.130940', NULL, 955500)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (25, 'aculich', 'proj1', '10.23.14', 81029, '2013-11-06 17:24:30.592837', '2013-11-06 17:27:53.690294', NULL, 85000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (26, 'aculich', 'proj1', '10.23.14', 831029, '2013-11-06 17:24:38.440723', '2013-11-06 17:27:59.843320', NULL, 835000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (27, 'aculich', 'proj1', '10.23.14', 8310290, '2013-11-06 17:24:45.330241', '2013-11-06 17:28:33.833847', NULL, 8350000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (28, 'aculich', 'proj3', '10.23.14', 3310290, '2013-11-06 17:25:07.458038', '2013-11-06 17:25:07.458038', NULL, 3350000)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (29, 'aculich', 'proj3', '10.23.14', 331020, '2013-11-06 17:25:16.834226', '2013-11-06 17:25:16.834226', NULL, 335000)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (30, 'aculich', 'proj3', '10.23.14', 33120, '2013-11-06 17:25:23.429979', '2013-11-06 17:25:23.429979', NULL, 33500)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (31, 'aculich', 'proj3', '10.23.14', 120, '2013-11-06 17:25:29.730738', '2013-11-06 21:23:27.048510', NULL, 33559)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (32, 'aculich', 'proj2', '10.23.14', 2120, '2013-11-06 17:25:42.115947', '2013-11-06 17:25:42.115947', NULL, 33500)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (33, 'aculich', 'proj2', '10.23.14', 21200, '2013-11-06 17:25:49.042488', '2013-11-06 17:25:49.042488', NULL, 33500)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (34, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:25:53.179257', '2013-11-06 17:25:53.179257', NULL, 33500)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (35, 'aculich', 'proj2', '10.23.14', 31200, '2013-11-06 17:26:04.410465', '2013-11-07 04:38:55.562584', NULL, 635800)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (36, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:51.907841', '2013-11-06 17:26:51.907841', NULL, 1024)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (37, 'aculich', 'eecs', '10.23.14', 1024, '2013-11-06 17:26:57.854420', '2013-11-06 17:26:57.854420', NULL, 2048)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (38, 'aculich', 'eecs', '10.23.14', 10240, '2013-11-06 17:27:04.605675', '2013-11-06 17:27:04.605675', NULL, 20480)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "usages" ("id","user","directory","date","usage","created_at","updated_at","columnname","max") VALUES (39, 'aculich', 'eecs', '10.23.14', 30240, '2013-11-06 17:27:10.388725', '2013-11-06 17:27:10.388725', NULL, 40480)
+  [1m[36m (0.5ms)[0m  [1mDROP TABLE "altered_usages"[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131115215451')
+  [1m[36m (90.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (3.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateQuota (20131105075106)
+Migrating to CreateUsages (20131105075226)
+Migrating to RemoveRateFromUsages (20131115215451)
+Migrating to AddRateColumnToUsage (20131115215600)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "usages" ADD "rate" float
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131115215600')[0m
+  [1m[35m (71.8ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
