@@ -14,8 +14,8 @@ module NavigationHelpers
     case page_name
 
     when /^the dashboard page$/ then '/dashboard'
-    when /^the view_quota page$/ then '/viewquotas'
-
+    when /the view quota page for (.*)$/ then '/viewquotas?current_directory='+$1
+      when /the change quota page for (.*) and (.*)$/ then '/viewquotas?modifying_directory='+$1 + '&user=' + $2
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -5,44 +5,23 @@ Feature: change quota
 
 Background: data for proj1 has been added to the database
 
-  Given the following directories exist:
-  | id| name     | usage  | quota|
-  | 1 | Home     | 5      | 10   |
-  | 2 | proj1    | 6      | 10   |
-  | 3 | proj2    | 1      | 10   |
-  | 4 | proj3    | 8      | 10   |
+  Given the following usages exist:
 
-  And the following usage_history exist:
-
-  | directory| month| usage    | quota | quota_limit |
-  |   proj1  | 1    | 5        | 10    | 20          |
-  |   proj1  | 2    | 6        | 10    | 20          |
-  |   proj1  | 3    | 1        | 10    | 20          |
-  |   proj1  | 4    | 2        | 10    | 20          |
-  |   proj2  | 1    | 5        | 10    | 20          |
-  |   proj2  | 2    | 6        | 10    | 20          |
-  |   proj3  | 3    | 1        | 10    | 20          |
-  |   proj3  | 4    | 2        | 10    | 20          |
-
-  And the current_month is 4
-
-  And  I am on the detailed view page for proj1
-
+  | user  | directory | date     | usage  | created_at         | updated_at         |  max    |  
+  | aculich | proj1     | 10.22.14 | 12000  | 2012-10-23 12:30:15| 2013-08-24 12:30:15|  100000 |
+  | aculich | proj2     | 10.23.14 | 10000  | 2012-08-23 12:30:15| 2013-09-24 12:30:15|  100000 |
+ 
+  And I am logged in as "aculich"
 
 Scenario: fill in valid change_quota value (happy path)
-  
-  When I fill in "change_quota" with "15"
-  And I press "Submit"
-  Then I should see "Submitted!"
-  And the "quota" field within "current_month" should contain "15"
-
-
-Scenario: fill in invalid change_quota value (sad path)
-  
-  When I fill in "change_quota" with "100000"
-  And I press "Submit"
-  Then I should see "Invalid Quota!"
-  And the "quota" field within "current_month" should contain "10"
+  Given I am on the view quota page for proj1
+  Then I should see "Change Quota"
+  When I press "Change proj1 Quota"
+  #Then I should be on the change quota page for proj1 and aculich
+  Then I fill in "quota_name" with "8000"
+  Then I press "Change Max Quota"
+  #Then I should be on the view quota page
+  And I should see "proj1 Quota was successfully changed"
 
 
   

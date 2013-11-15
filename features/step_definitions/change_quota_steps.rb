@@ -1,12 +1,13 @@
-Then /I should see a detailed view of the quota history$/ do
-  pending # express the regexp above with the code you wish you had
+
+Given /^the following usages exist:$/ do |table|
+	table.hashes.each do |usage|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+	#puts movie
+  	  new_usage = Usage.create!(usage)
+        end
 end
 
-Given /the current_month is (\d+)$/ do |m|
-	Time.now.month==m
+Given /I am logged in as "(.*)"/ do |name|
+	#always logged in as aculich for now
 end
-
-Given /the following usage_history exist:$/ do |usage|
-	Usage.create!(usage.hashes)
-end
-
