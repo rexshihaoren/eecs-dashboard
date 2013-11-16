@@ -12,7 +12,7 @@
        // type: 'arearange'
       }, 
       title: { 
-        text: "Past to Current Quota"
+        text: "Past to Current Usage and Quota"
       }, 
       xAxis: {
      	text: "date", 
@@ -24,19 +24,19 @@
       yAxis: {
         type: 'logarithmic',
         title: {
-          text: "Bytes", 
+          text: "GB", 
           min: 0
         }
       }, 
       series: [{
-        name: "Quota", 
+        name: "Usage", 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000},
         data: #{@current_values}
       }
       , 
       {
-        name: "Max Quota", 
+        name: "Quota", 
         data: #{@max_values}, 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000}

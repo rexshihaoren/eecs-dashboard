@@ -12,7 +12,7 @@
        // type: 'arearange'
       }, 
       title: { 
-        text: "Past to Current Quota"
+        text: "Past to Current Usage"
       }, 
       xAxis: {
      	text: "date", 
@@ -24,12 +24,12 @@
       yAxis: {
         type: 'logarithmic',
         title: {
-          text: "Bytes", 
+          text: "GB", 
           min: 0
         }
       }, 
       series: [{
-        name: "Quota", 
+        name: "Usage", 
         pointInterval: #{1.day * 1000},
         pointStart: #{3.weeks.ago.to_i * 1000},
         data: #{@current_values}
@@ -64,12 +64,17 @@
       - storage.each do |proj, percent|
         - if proj == @current_directory
           %tr{:class => 'hilite'}
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= percent
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+          %br/ 
         - else 
           %tr
-          %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
-          %td= percent
-          %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
-          %br/
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= percent
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %br/
+          
 
 
 =link_to "Back to DashBoard", '/dashboard'

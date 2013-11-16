@@ -1,0 +1,61 @@
+%h1 View Billing 
+
+:javascript 
+  $(function() {
+    var chart = new Highcharts.Chart({
+      chart: {
+        renderTo: "view_billing_chart", 
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      }, 
+      title: { 
+        text: ""
+      }, 
+      
+     plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+      series: [{
+            type: 'pie',
+            name: 'Distrubtion',
+            data: #{@pie_chart_series}
+            //#{@pie_chart.to_json}
+        }]
+    });
+  });
+
+%div{:id => "view_billing_chart",  :style => "width:95%; height:50%;"}
+
+
+%table#viewbilling_table
+  %head
+    %tr{:id => "viewbilling_table_header"}
+      %td item 
+      %td $/month
+      %td usage
+      %td cost
+  %tbody
+   
+  - @cost.each do |name, cost|
+    %tr
+      %td= name
+      %td= @monthlyRate[name]
+      %td= @usageCost[name]
+      %td= cost
+      %br/  
+
+%div{:id => "viewbilling_total_cost"} TOTAL COST= $#{@total_cost} 
+    
+          
+
+=link_to "Back to DashBoard", '/dashboard'
