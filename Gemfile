@@ -16,14 +16,15 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'railroady'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'simplecov', :require => false
 end
+
 group :production do
   gem 'pg'
 end
