@@ -1,0 +1,12 @@
+-#  This file is app/views/movies/index.html.haml
+
+
+%h1 EECS Dashboard
+
+= link_to "View Storage", "http://iris.berkeley.edu"
+%br/
+= link_to "View Billing Information", dashboard_view_billing_path()
+%br/
+= link_to "View Your Dependents", "http://iris.berkeley.edu"
+%br/
+= link_to "View Quota", viewquotas_path()

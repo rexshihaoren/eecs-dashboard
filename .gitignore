@@ -16,3 +16,9 @@ log/test.log
 
 *.log
 
+
+*.log
+
+log/development.log
+
+log/development.log

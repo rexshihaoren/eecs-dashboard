@@ -15,7 +15,8 @@ module NavigationHelpers
 
     when /^the dashboard page$/ then '/dashboard'
     when /the view quota page for (.*)$/ then '/viewquotas?current_directory='+$1
-      when /the change quota page for (.*) and (.*)$/ then '/viewquotas?modifying_directory='+$1 + '&user=' + $2
+    when /the change quota page for (.*) and (.*)$/ then '/viewquotas?modifying_directory='+$1 + '&user=' + $2
+    when /the view billing page$/ then '/view_billing'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
