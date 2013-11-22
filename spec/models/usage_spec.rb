@@ -14,7 +14,7 @@ describe Usage do
 	end
 	describe 'action getHistoryforUserDirectory' do
 		it 'should return usages ordered by date' do
-			Usage.getHistoryforUserDirectory('fox', 'cs169').should == [@usage, @other_usage]
+			expect(Usage.getHistoryforUserDirectory('fox', 'cs169')).to eq([@usage, @other_usage])
 		end
 	end
 

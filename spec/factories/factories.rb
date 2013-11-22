@@ -17,6 +17,7 @@ FactoryGirl.define do
 		rate 10
 	end
 
+
 	factory :quota do
 		user 'fox'
 		directory 'proj1'
