@@ -11,9 +11,7 @@ class ViewbillingController < ApplicationController
   def index
     set_user_name
     @user_name = session[:user_name]
-
     date_for_user = Usage.find_all_by_user(session[:user_name])
-
     @most_recent_usage_dates = {}
     date_for_user.each do |usage_model|
       date = parse_date usage_model.date
@@ -27,7 +25,7 @@ class ViewbillingController < ApplicationController
       else 
 	@most_recent_usage_dates[usage_model.directory] = usage_model
       end
-    end 
+    end
      compute_cost @most_recent_usage_dates
   end
 
