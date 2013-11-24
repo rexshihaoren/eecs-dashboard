@@ -1,0 +1,23 @@
+%h1 View Dependants
+
+
+%table#viewquota_table
+  %head
+    %tr{:id => "viewquota_table_header"}
+      %td Dependant Name
+      %td Total Billing
+      %td Total Data
+      %td Current Quota
+  %tbody
+    - @dependants_data.values.each do |deps|
+      %tr
+        %td= link_to deps[0], dashboard_path(:dependant_name => deps[0])
+        %td= deps[1]
+        %td= deps[2]
+        %td= deps[3]
+        %br/ 
+          
+    
+          
+
+=link_to "Back to DashBoard", '/dashboard'
