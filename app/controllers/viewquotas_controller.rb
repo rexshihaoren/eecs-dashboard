@@ -5,9 +5,13 @@ class ViewquotasController < ApplicationController
     @current_values = []
     @current_directory = nil
     set_user_name
-    @user_name = session[:user_name]
+    if params[:dependant] != nil
+	@user_name = params[:dependant]
+    else
+    	@user_name = session[:user_name]
+    end
 
-    names = Usage.find_all_by_user(session[:user_name])
+    names = Usage.find_all_by_user(@user_name)
     check_change_quota
     set_current_directory(names)
   
@@ -27,19 +31,27 @@ class ViewquotasController < ApplicationController
       
     end
     print hash
-    @storage_data = {[session[:user_name]] => hash}
+    @storage_data = {@user_name => hash}
   end
 
   def set_current_directory(names)
     if params[:current_directory] == nil && session[:current_directory] == nil
       session[:current_directory] = names[0].directory 
       flash.keep
-      redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      if params[:dependant] != nil
+	  redirect_to viewquotas_path({:current_directory => session[:current_directory], :dependant => params[:dependant]})
+      else
+      	redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      end
     elsif session[:current_directory] == nil
       flash.now[:error] = ("No data found in DB")
     elsif params[:current_directory] == nil
       flash.keep
-      redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      if params[:dependant] != nil
+	  redirect_to viewquotas_path({:current_directory => session[:current_directory], :dependant => params[:dependant]})
+      else
+      	redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      end
     else 
         @current_directory = params[:current_directory]
     end

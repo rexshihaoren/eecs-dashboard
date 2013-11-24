@@ -5,16 +5,14 @@
   %head
     %tr{:id => "viewquota_table_header"}
       %td Dependant Name
-      %td Total Billing
-      %td Total Data
-      %td Current Quota
+      %td Billing Page
+      %td ViewQuota Page
   %tbody
-    - @dependants_data.values.each do |deps|
+    - @dependants.each do |dep|
       %tr
-        %td= link_to deps[0], dashboard_path(:dependant_name => deps[0])
-        %td= deps[1]
-        %td= deps[2]
-        %td= deps[3]
+        %td= dep.login
+        %td= link_to "#{dep.login}'s billing", view_billing_path(:dependant => dep.login)
+        %td= link_to "#{dep.login}'s quota", viewquotas_path(:dependant => dep.login)
         %br/ 
           
     

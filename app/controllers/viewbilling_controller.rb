@@ -10,8 +10,12 @@ class ViewbillingController < ApplicationController
 
   def index
     set_user_name
-    @user_name = session[:user_name]
-    date_for_user = Usage.find_all_by_user(session[:user_name])
+    if params[:dependant] != nil
+	@user_name = params[:dependant]
+    else
+    	@user_name = session[:user_name]
+    end
+    date_for_user = Usage.find_all_by_user(@user_name)
     @most_recent_usage_dates = {}
     date_for_user.each do |usage_model|
       date = parse_date usage_model.date
@@ -47,7 +51,7 @@ class ViewbillingController < ApplicationController
     @usageCost["SIF"] = "n/a"
       
     hash.each do |key, value|
-      dryness = (value.rate * value.usage).round(2)
+      dryness = (0.09 * value.usage).round(2)
       @cost[key] = "$" + dryness.to_s
       @monthlyRate[key] = "$" + value.rate.to_s + "/GB"
       @usageCost[key] = value.usage.to_s + " GB"
