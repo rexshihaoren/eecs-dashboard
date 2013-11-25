@@ -1,6 +1,7 @@
-
-
-%h1 #{@user_name}'s Quota
+- if @dependant != nil
+  %h1 View Quota and Storage for your dependant, #{@dependant}
+- if @dependant == nil
+  %h1 View Quota and Storage for yourself, #{@user_name}
 
 :javascript 
   $(function() {

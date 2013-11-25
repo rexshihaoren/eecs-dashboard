@@ -1,4 +1,7 @@
-%h1 View Billing 
+- if @dependant != nil
+  %h1 View Billing for your dependant, #{@dependant}
+- if @dependant == nil
+  %h1 View Billing for yourself, #{@user_name}
 
 :javascript 
   $(function() {
