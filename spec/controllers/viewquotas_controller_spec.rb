@@ -18,7 +18,7 @@ describe ViewquotasController do
 			controller.instance_variable_set("@current_directory", 'proj3')
 			Usage.stub(:find_all_by_user).with(@user_name).and_return([@other_usage, @other_usage1])
 			get :index
-			assign(:user_name).should == 'aculich'
+			assigns(:user_name).should == 'aculich'
 
 		end
 
