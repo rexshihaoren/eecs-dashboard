@@ -8,14 +8,14 @@ Background: billing info for graduate students and connections to graduate stude
 
   Given the following usages exist:
 
-  | user    | directory | date    | usage  |  max    |  
-  | Bob	    | proj1     | 11.1.14 | 50     |  100    |
-  | Bob	    | proj1     | 11.2.14 | 80     |  100    |
-  | Bob	    | proj1     | 11.3.14 | 90     |  100    |
-  | Bob	    | proj1     | 11.4.14 | 70     |  100    |
-  | Bob	    | proj1     | 11.5.14 | 100    |  100    |
-  | Bob	    | proj1     | 11.6.14 | 120    |  150    |
-  | Bill    | proj2     | 10.1.14 | 100    |  120    |
+  | user    | directory | date    | usage  |  max    | rate | 
+  | Bob	    | proj1     | 11.1.14 | 50     |  100    | 0.09 |
+  | Bob	    | proj1     | 11.2.14 | 80     |  100    | 0.09 |
+  | Bob	    | proj1     | 11.3.14 | 90     |  100    | 0.09 |
+  | Bob	    | proj1     | 11.4.14 | 70     |  100    | 0.09 |
+  | Bob	    | proj1     | 11.5.14 | 100    |  100    | 0.09 |
+  | Bob	    | proj1     | 11.6.14 | 120    |  150    | 0.09 |
+  | Bill    | proj2     | 10.1.14 | 100    |  120    | 0.09 |
 
   And aculich is being billed for Bob and Bill
 

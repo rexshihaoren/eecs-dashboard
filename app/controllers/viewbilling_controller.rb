@@ -52,7 +52,8 @@ class ViewbillingController < ApplicationController
     @usageCost["SIF"] = "n/a"
       
     hash.each do |key, value|
-      dryness = (0.09 * value.usage).round(2)
+
+      dryness = (value.rate * value.usage).round(2)
       @cost[key] = "$" + dryness.to_s
       @monthlyRate[key] = "$" + value.rate.to_s + "/GB"
       @usageCost[key] = value.usage.to_s + " GB"
