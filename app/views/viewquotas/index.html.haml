@@ -72,7 +72,7 @@
           %tr
             %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj, :dependant => @dependant)
             %td= percent
-            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name, :dependant => @dependant
             %br/
           
 

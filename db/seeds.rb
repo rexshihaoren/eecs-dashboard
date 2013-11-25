@@ -9,9 +9,9 @@
 
 
 user = "Bob"
-directory = "proj1"
-usage = [50,73,86,104,92,88]
-max = [100,100,120,140,140,140]
+directory = "proj2"
+usage = [70,90,120,104,130,120]
+max = [100,100,150,140,150,150]
 
 (1..6).each do |num|
   date = "11." + num.to_s + ".13"
@@ -19,15 +19,12 @@ max = [100,100,120,140,140,140]
 end
 
 user = "Bill"
-usage = [40,53,80,120,150,145]
-max = [50,80,100,150,200,200]
+usage = [100,120,120,110,80,90]
+max = [120,150,150,150,100,100]
 (1..6).each do |num|
   date = "11." + num.to_s + ".13"
   Usage.create!(:user => user, :date => date, :directory => directory, :max => max[num-1], :usage => usage[num-1])
 end
 
-User.create!(:login => "aculich", :payer => nil)
-User.create!(:login => "Bob", :payer => "aculich")
-User.create!(:login => "Bill", :payer => "aculich")
 
 
