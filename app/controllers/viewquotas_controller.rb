@@ -24,7 +24,7 @@ class ViewquotasController < ApplicationController
         @max_values << [counter.day.ago.to_i * 1000, usage.max]
         counter = counter - 1
       end
-      hash[usage.directory] = "#{((usage.usage.to_f/usage.max)*100).round(2)}%"
+	  hash[usage.directory] = "#{((usage.usage.to_f/usage.max.to_f)*100).round(2)}%"
       #date = usage.date.split('.')
       ## TODO Convert dates into integer that can be evaluated by the graph
       #epoch = Date.new(2013, date[0].to_i, date[1].to_i)
