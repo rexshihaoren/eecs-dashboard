@@ -5,10 +5,9 @@ class ViewquotasController < ApplicationController
     @current_values = []
     @current_directory = nil
     set_user_name
-    @dependant = nil
-    if params[:dependant] != nil
+    @dependant = params[:dependant]
+    if @dependant != nil
 	@user_name = params[:dependant]
-	@dependant = params[:dependant]
     else
     	@user_name = session[:user_name]
     end
@@ -54,7 +53,7 @@ class ViewquotasController < ApplicationController
       else
       	redirect_to viewquotas_path({:current_directory => session[:current_directory]})
       end
-    else 
+    else
         @current_directory = params[:current_directory]
     end
   end 
@@ -74,11 +73,12 @@ class ViewquotasController < ApplicationController
         session[:current_directory] = params[:current_directory]
 	flash.now[:notice] = ("#{new_model.directory} Quota was successfully changed")
         flash.keep
-        redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+        redirect_to viewquotas_path({:current_directory => session[:current_directory], :dependant => params[:dependant]})
     end 
   end
  
   def change_quota
+    @dependant = params[:dependant]
     model = Usage.get_model_by_user_and_proj(params[:user], params[:modifying_directory])
     @model = model[model.length - 1]
   end 

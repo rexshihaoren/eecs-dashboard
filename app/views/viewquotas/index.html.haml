@@ -66,7 +66,7 @@
           %tr{:class => 'hilite'}
             %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj, :dependant => @dependant)
             %td= percent
-            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name, :dependant => @dependant
           %br/ 
         - else 
           %tr
@@ -78,4 +78,6 @@
 
 
 =link_to "Back to DashBoard", '/dashboard'
-          
+%br/
+- if @dependant != nil
+  =link_to "Back to Dependants", viewdependants_path()
