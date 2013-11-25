@@ -5,7 +5,8 @@
     %br/
     = hidden_field_tag :new_model, @model.id
     = hidden_field_tag :current_directory, @model.directory
-    = hidden_field_tag :dependant, @dependant
+    -if @dependant != nil
+      = hidden_field_tag :dependant, @dependant
     = text_field_tag "quota_name", "Current Quota", :value => @model.max
     = submit_tag "Change Max Quota", :id => "change_max_quota_button"
   =link_to "Back", viewquotas_path(:dependant => @dependant), :id => "change_max_quota_back" 
