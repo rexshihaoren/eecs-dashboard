@@ -10,6 +10,7 @@ class ViewbillingController < ApplicationController
 
   def index
     set_user_name
+    @dependant = params[:dependant]
     if params[:dependant] != nil
 	@user_name = params[:dependant]
     else
