@@ -64,13 +64,13 @@
       - storage.each do |proj, percent|
         - if proj == @current_directory
           %tr{:class => 'hilite'}
-            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj, :dependant => @dependant)
             %td= percent
             %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
           %br/ 
         - else 
           %tr
-            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj, :dependant => @dependant)
             %td= percent
             %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
             %br/

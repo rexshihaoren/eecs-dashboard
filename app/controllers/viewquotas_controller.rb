@@ -5,8 +5,10 @@ class ViewquotasController < ApplicationController
     @current_values = []
     @current_directory = nil
     set_user_name
+    @dependant = nil
     if params[:dependant] != nil
 	@user_name = params[:dependant]
+	@dependant = params[:dependant]
     else
     	@user_name = session[:user_name]
     end
