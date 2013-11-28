@@ -37,7 +37,19 @@
     });
   });
 
+
+
 %div{:id => "view_billing_chart",  :style => "width:95%; height:50%;"}
+
+
+#current_history_container.container
+  %ul.current_history_buttons
+    %li
+      =button_to "Current"
+      .current_button
+    %li
+      .history_button
+      =button_to "History"
 
 
 %table#viewquota_table

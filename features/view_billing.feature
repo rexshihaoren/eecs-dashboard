@@ -20,6 +20,8 @@ Scenario: press on view_billing button
   Given I am on the dashboard page
   When I follow "View Billing Information"
   Then I should be on the view billing page 
+  And I should see "Current" button
+  And I should see "History" button
   And I should see "TOTAL COST= $107.1"
   And I should see the following rows in the view billing table:
   | item      | $/month    | usage     |  cost |
