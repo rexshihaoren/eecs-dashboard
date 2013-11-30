@@ -13,7 +13,23 @@ div#header {
   height: 70px;
   border-bottom: 10px solid #fddd88;
 }
+.current_history_buttons{
+  display: block;
+  font-size: 1.05em;
+  font-size: 3em;
+  color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-spacing: 10px;
+  margin: auto;
+}
 
+ul.current_history_buttons li{
+  display: inline-block;
+  margin-right: 100px;
+  float:middle;
+}
 .hilite {
   background-color: yellow;
 }
