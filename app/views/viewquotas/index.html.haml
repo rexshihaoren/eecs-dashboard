@@ -1,6 +1,7 @@
-
-
-%h1 #{@user_name}'s Quota
+- if @dependant != nil
+  %h1 Quota and Storage for your Dependant: #{@dependant}
+- if @dependant == nil
+  %h1 Quota and Storage for Yourself: #{@user_name}
 
 :javascript 
   $(function() {
@@ -64,18 +65,20 @@
       - storage.each do |proj, percent|
         - if proj == @current_directory
           %tr{:class => 'hilite'}
-            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj, :dependant => @dependant)
             %td= percent
-            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name, :dependant => @dependant
           %br/ 
         - else 
           %tr
-            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj)
+            %td= link_to "View #{proj} Quota", viewquotas_path(:current_directory => proj, :dependant => @dependant)
             %td= percent
-            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name
+            %td= button_to "Change #{proj} Quota", :action => :change_quota, :modifying_directory => proj, :user => @user_name, :dependant => @dependant
             %br/
           
 
 
 =link_to "Back to DashBoard", '/dashboard'
-          
+%br/
+- if @dependant != nil
+  =link_to "Back to Dependants", viewdependants_path()

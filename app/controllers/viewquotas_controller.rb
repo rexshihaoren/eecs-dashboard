@@ -5,46 +5,55 @@ class ViewquotasController < ApplicationController
     @current_values = []
     @current_directory = nil
     set_user_name
-    @user_name = session[:user_name]
+    @dependant = params[:dependant]
+    if @dependant != nil
+	@user_name = params[:dependant]
+    else
+    	@user_name = session[:user_name]
+    end
 
-    puts "Params= #{params.inspect}"
-    puts "Current directory = #{params[:current_directory]}"
-    names = Usage.find_all_by_user(session[:user_name])
-    puts "All usage objects #{Usage.all}"
+    names = Usage.find_all_by_user(@user_name)
     check_change_quota
     set_current_directory(names)
   
     counter = 6
     hash = {}
+    print names
     names.each do |usage|
       if usage.directory == @current_directory
         @current_values << [counter.day.ago.to_i * 1000, usage.usage]
         @max_values << [counter.day.ago.to_i * 1000, usage.max]
         counter = counter - 1
       end
-        
-      hash[usage.directory] = "#{((usage.usage.to_f/usage.max)*100).round(2)}%"
+	  hash[usage.directory] = "#{((usage.usage.to_f/usage.max.to_f)*100).round(2)}%"
       #date = usage.date.split('.')
       ## TODO Convert dates into integer that can be evaluated by the graph
       #epoch = Date.new(2013, date[0].to_i, date[1].to_i)
       
     end
-    @storage_data = {[session[:user_name]] => hash}
+    print hash
+    @storage_data = {@user_name => hash}
   end
 
   def set_current_directory(names)
     if params[:current_directory] == nil && session[:current_directory] == nil
       session[:current_directory] = names[0].directory 
-      puts "Session = #{session[:current_directory]}"
       flash.keep
-      redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      if params[:dependant] != nil
+	  redirect_to viewquotas_path({:current_directory => session[:current_directory], :dependant => params[:dependant]})
+      else
+      	redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      end
     elsif session[:current_directory] == nil
       flash.now[:error] = ("No data found in DB")
     elsif params[:current_directory] == nil
-      puts "Session = #{session[:current_directory]}"
       flash.keep
-      redirect_to viewquotas_path({:current_directory => session[:current_directory]})
-    else 
+      if params[:dependant] != nil
+	  redirect_to viewquotas_path({:current_directory => session[:current_directory], :dependant => params[:dependant]})
+      else
+      	redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+      end
+    else
         @current_directory = params[:current_directory]
     end
   end 
@@ -64,17 +73,13 @@ class ViewquotasController < ApplicationController
         session[:current_directory] = params[:current_directory]
 	flash.now[:notice] = ("#{new_model.directory} Quota was successfully changed")
         flash.keep
-        redirect_to viewquotas_path({:current_directory => session[:current_directory]})
+        redirect_to viewquotas_path({:current_directory => session[:current_directory], :dependant => params[:dependant]})
     end 
   end
  
   def change_quota
+    @dependant = params[:dependant]
     model = Usage.get_model_by_user_and_proj(params[:user], params[:modifying_directory])
-    puts "AAAAAAAAAAAAAAAAAAA"
-    puts params[:modifying_directory]
-    puts params[:user]
-    puts model
     @model = model[model.length - 1]
-    puts "Model #{@model.inspect}"
   end 
 end

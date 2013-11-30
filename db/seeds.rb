@@ -9,20 +9,22 @@
 
 
 user = "Bob"
-directory = "project-eecs"
-proj = "proj1"
-usage = [500,730,860,1040,920,880,1000]
-quota = [1000,1000,1200,1400,1400,1200]
+directory = "proj2"
+usage = [70,90,120,104,130,120]
+max = [100,100,150,140,150,150]
 
-(1..7).each do |num|
-  date = "7." + num.to_s + ".13"
-  Quota.create!(:user => user, :date => date, :directory => "project-eecs", :proj => proj, :quota => quota[num-1], :usage => usage[num-1])
+(1..6).each do |num|
+  date = "11." + num.to_s + ".13"
+  Usage.create!(:user => user, :date => date, :directory => directory, :max => max[num-1], :usage => usage[num-1])
 end
-proj = "proj2"
-usage = [400,530,800,1200,1500,1450,1600]
-quota = [500,800,1000,1500,2000,2000,2000]
-(1..7).each do |num|
-  date = "7." + num.to_s + ".13"
-  Quota.create!(:user => user, :date => date, :directory => "project-eecs", :proj => proj, :quota => quota[num-1], :usage => usage[num-1])
+
+user = "Bill"
+usage = [100,120,120,110,80,90]
+max = [120,150,150,150,100,100]
+(1..6).each do |num|
+  date = "11." + num.to_s + ".13"
+  Usage.create!(:user => user, :date => date, :directory => directory, :max => max[num-1], :usage => usage[num-1])
 end
+
+
 

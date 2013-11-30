@@ -8,12 +8,23 @@ class ViewbillingController < ApplicationController
   end
 
 
+  def set_graph graph 
+    if graph == "current"
+      session[:graph] = "current"
+    else
+      session[:graph] = "history"
+  end 
+
   def index
     set_user_name
-    @user_name = session[:user_name]
-
-    date_for_user = Usage.find_all_by_user(session[:user_name])
-
+    set_graph params[:graph]
+    @dependant = params[:dependant]
+    if params[:dependant] != nil
+	@user_name = params[:dependant]
+    else
+    	@user_name = session[:user_name]
+    end
+    date_for_user = Usage.find_all_by_user(@user_name)
     @most_recent_usage_dates = {}
     date_for_user.each do |usage_model|
       date = parse_date usage_model.date
@@ -27,7 +38,7 @@ class ViewbillingController < ApplicationController
       else 
 	@most_recent_usage_dates[usage_model.directory] = usage_model
       end
-    end 
+    end
      compute_cost @most_recent_usage_dates
   end
 
@@ -49,6 +60,7 @@ class ViewbillingController < ApplicationController
     @usageCost["SIF"] = "n/a"
       
     hash.each do |key, value|
+
       dryness = (value.rate * value.usage).round(2)
       @cost[key] = "$" + dryness.to_s
       @monthlyRate[key] = "$" + value.rate.to_s + "/GB"
@@ -70,7 +82,6 @@ class ViewbillingController < ApplicationController
    puts "JSon pie chart2 #{@pie_chart.to_json.html_safe}"
 
   end
-
 
   def parse_date date
     date = date.split('.')

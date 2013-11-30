@@ -1,4 +1,7 @@
-%h1 View Billing 
+- if @dependant != nil
+  %h1 Billing for your Dependant: #{@dependant}
+- if @dependant == nil
+  %h1 Billing for Yourself: #{@user_name}
 
 :javascript 
   $(function() {
@@ -32,14 +35,76 @@
             //#{@pie_chart.to_json}
         }]
     });
+   var chartHistory = new Highchart.Chart({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: 'Historic and Estimated Worldwide Population Growth by Region'
+            },
+            subtitle: {
+                text: 'Source: Wikipedia.org'
+            },
+            xAxis: {
+                categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+                tickmarkPlacement: 'on',
+                title: {
+                    enabled: false
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Billions'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value / 1000;
+                    }
+                }
+            },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' millions'
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#666666',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#666666'
+                    }
+                }
+            },
+            series: [{
+                name: 'Asia',
+                data: [502, 635, 809, 947, 1402, 3634, 5268]
+            }, {
+                name: 'Africa',
+                data: [106, 107, 111, 133, 221, 767, 1766]
+            }, {
+                name: 'Europe',
+                data: [163, 203, 276, 408, 547, 729, 628]
+            }, {
+                name: 'America',
+                data: [18, 31, 54, 156, 339, 818, 1201]
+            }, {
+                name: 'Oceania',
+                data: [2, 2, 2, 6, 13, 30, 46]
+            }]
+        });
   });
 
-%div{:id => "view_billing_chart",  :style => "width:95%; height:50%;"}
+%div{:id => "view_billing_chart",  :style => "margin: 0px auto 0px auto; text-align: center;"}
 
+%div{:id => "view_billing_buttons", :style => "margin: 0px auto 0px auto; text-align: center; display: block;"}
+  =button_to "Current"
+  =button_to "History" 
 
-%table#viewbilling_table
+%table#viewquota_table
   %head
-    %tr{:id => "viewbilling_table_header"}
+    %tr{:id => "viewquota_table_header"}
       %td item 
       %td $/month
       %td usage
@@ -59,3 +124,6 @@
           
 
 =link_to "Back to DashBoard", '/dashboard'
+%br/
+- if @dependant != nil
+  =link_to "Back to Dependants", viewdependants_path()

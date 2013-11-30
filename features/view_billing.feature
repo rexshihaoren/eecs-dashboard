@@ -4,19 +4,29 @@ Feature: view billing
   So that I can understand what I am being charged
   I want to see how much I am being charged given the amount of space I am using
 
-Background: billing of the past 12 months have been added to database
+Background: usage data have been added to database
 
-  Given the following billing_info exist:
-
-  And  I am on the storage_directory page
+  Given the following usages exist:
+  | user    | directory | date     | usage| max    | rate | 
+  | aculich | proj1     | 10.22.14 | 2    | 100000 | 2.1  |
+  | aculich | proj2     | 10.23.14 | 2    | 100000 | 3.2  |
+  | aculich | eecs-home | 11.23.14 | 3    | 100000 | 1.5  |
+ 
 
 Scenario: press on view_billing button
   
-  Given I am on the storage_directory page 
-  When I press "View Billing"
-  Then I should be on the view billing Page 
-  And I should see billing for the past 12 months
-  And I should see predicted billing for the nexted 6 months
-  And I should see average_daily_billing
-  And I should see average_monthly_billing
-  And I should see average_yearly_billing
+
+
+  Given I am on the dashboard page
+  When I follow "View Billing Information"
+  Then I should be on the view billing page 
+  And I should see "TOTAL COST= $107.1"
+  And I should see the following rows in the view billing table:
+  | item      | $/month    | usage     |  cost |
+  | CIF       | $72.00     | n/a       |  $72  |
+  | ICF       | $10        | n/a       |  $10  |
+  | SIF       | $10        | n/a       |  $10  |
+  | proj1     | $2.1/GB    | 2 GB      |  $4.2 |
+  | proj2     | $3.2/GB    | 2 GB      |  $6.4 |
+  | eecs-home | $1.5/GB    | 3 GB      |  $4.5 |
+

@@ -1,0 +1,18 @@
+%h1 Dependants of #{@user_name}
+
+%table#viewquota_table
+  %head
+    %tr{:id => "viewquota_table_header"}
+      %td Dependant Name
+      %td Billing Page
+      %td ViewQuota Page
+  %tbody
+    - @dependants.each do |dep|
+      %tr
+        %td= dep.login
+        %td= link_to "#{dep.login}'s billing", view_billing_path(:dependant => dep.login)
+        %td= link_to "#{dep.login}'s quota", viewquotas_path(:dependant => dep.login)
+        %br/ 
+          
+    
+=link_to "Back to DashBoard", '/dashboard'
