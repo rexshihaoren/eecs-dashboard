@@ -16,5 +16,5 @@ As a user who uses storage services, so that I can understand what I am being ch
 As a faculty member, so that I can understand what I'm being charged for, I want to see who I am being billed for (which of my students and how much per student).
 ####5. View Billing Over Time
 As a user who uses storage services, so that I can understand what I am being charged for and how that has varied over time, I want to see a graph of the components of what I'm paying and how those components have changed over time.
-####6.Enhanced Dashboard
+####6. Enhanced Dashboard
 As a user who uses uses storage services, so that I can quickly and easily understand my account status, I want to see a summary/snapshot of my most important account details on the dashboard page.
