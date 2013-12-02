@@ -27,8 +27,6 @@ describe ViewbillingController do
 	      expect(response).to render_template("index")
 	    end
 
-
-
 	    it "shoud assign @most_recent_usage_dates" do
 	    	get :index
 	    	assigns(:most_recent_usage_dates).should_not be_nil
@@ -37,6 +35,10 @@ describe ViewbillingController do
 		it 'should call compute_cost' do
 			expect(controller).to receive(:set_user_name)
 			get :index
+		end
+		it 'should call set_graph' do
+			get :index
+			session[:graph].should_not be_nil
 		end
 	end
 

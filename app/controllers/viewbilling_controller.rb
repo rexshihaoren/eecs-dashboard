@@ -8,16 +8,6 @@ class ViewbillingController < ApplicationController
     end
   end
 
-
-  def set_graph graph 
-    if graph == "current"
-      session[:graph] = "current"
-    else
-      session[:graph] = "history"
-    end
-  end 
-
-
   def dummy_dates_for_history 
     amount_of_items = 8
     @dummy_dates = []

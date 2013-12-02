@@ -13,13 +13,11 @@ Background: usage data have been added to database
   | aculich | eecs-home | 11.23.14 | 3    | 100000 | 1.5  |
  
 
-Scenario: press on view_billing button
+Scenario: follow view_billing from dashboard page
   
-
-
   Given I am on the dashboard page
   When I follow "View Billing Information"
-  Then I should be on the view billing page 
+  Then I should be on the view billing page
   And I should see "TOTAL COST= $107.1"
   And I should see the following rows in the view billing table:
   | item      | $/month    | usage     |  cost |
