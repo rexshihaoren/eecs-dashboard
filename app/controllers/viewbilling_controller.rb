@@ -153,8 +153,6 @@ def generator direct
 
   end
 
-<<<<<<< HEAD
-=======
   def parse_date date
     date = date.split('.')
     newdate = '20' + date[2] + '-' + date[0] + '-' + date[1]
@@ -162,6 +160,4 @@ def generator direct
     date = DateTime.new(temp.to_i, date[0].to_i, date[1].to_i)
     date
   end 
-
->>>>>>> 96ee3f73622568467626954c905f387936888708
 end
