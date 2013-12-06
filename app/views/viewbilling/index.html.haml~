@@ -1,10 +1,13 @@
-%h1 View Billing 
+- if @dependant != nil
+  %h1 Billing for your Dependant: #{@dependant}
+- if @dependant == nil
+  %h1 Billing for Yourself: #{@user_name}
 
 :javascript 
   $(function() {
     var chart = new Highcharts.Chart({
       chart: {
-        renderTo: "view_billing_chart", 
+        renderTo: view_billing_chart_current, 
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false
@@ -28,30 +31,143 @@
       series: [{
             type: 'pie',
             name: 'Distrubtion',
-            data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['Others',   0.7]
-            ]
+            data: #{@pie_chart_series}
             //#{@pie_chart.to_json}
         }]
     });
+<<<<<<< HEAD
+   var chartHistory = new Highchart.Chart({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: 'Historic and Estimated Worldwide Population Growth by Region'
+            },
+            subtitle: {
+                text: 'Source: Wikipedia.org'
+            },
+            xAxis: {
+                categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+=======
+    var chart_history = new Highcharts.Chart({
+            chart: {
+                type: 'area',
+                renderTo: view_billing_chart_history
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: #{@dummy_dates},
+>>>>>>> d5df04c... Added history graph:
+                tickmarkPlacement: 'on',
+                title: {
+                    enabled: false
+                }
+            },
+            yAxis: {
+                title: {
+<<<<<<< HEAD
+                    text: 'Billions'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value / 1000;
+=======
+                    text: 'Dollars Per Month'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value;
+>>>>>>> d5df04c... Added history graph:
+                    }
+                }
+            },
+            tooltip: {
+                shared: true,
+<<<<<<< HEAD
+                valueSuffix: ' millions'
+=======
+                valuePrefix: '$'
+>>>>>>> d5df04c... Added history graph:
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#666666',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#666666'
+                    }
+                }
+            },
+<<<<<<< HEAD
+            series: [{
+=======
+            series: 
+            
+            #{@series_history_data}
+            /*{
+>>>>>>> d5df04c... Added history graph:
+                name: 'Asia',
+                data: [502, 635, 809, 947, 1402, 3634, 5268]
+            }, {
+                name: 'Africa',
+                data: [106, 107, 111, 133, 221, 767, 1766]
+            }, {
+                name: 'Europe',
+                data: [163, 203, 276, 408, 547, 729, 628]
+            }, {
+                name: 'America',
+                data: [18, 31, 54, 156, 339, 818, 1201]
+            }, {
+                name: 'Oceania',
+                data: [2, 2, 2, 6, 13, 30, 46]
+<<<<<<< HEAD
+            }]
+        });
+=======
+            }*/
+            
+        });  
+        window.onload = function () {
+          var e = document.getElementById("view_billing_chart_current");
+          e.hide();
+          document.getElementById('view_billing_chart_current').style.display = "hidden";
+        };
+>>>>>>> d5df04c... Added history graph:
   });
 
-%div{:id => "view_billing_chart",  :style => "width:95%; height:50%;"}
+%div{:id => "view_billing_chart",  :style => "margin: 0px auto 0px auto; text-align: center;"}
 
+<<<<<<< HEAD
+%div{:id => "view_billing_buttons", :style => "margin: 0px auto 0px auto; text-align: center; display: block;"}
+  =button_to "Current"
+  =button_to "History" 
+=======
 
-%table#viewbilling_table
+-if @hide_current
+  %div{:id => "view_billing_chart_current",  :style => "width:95%; height:50%;"}
+  %div{:id => "view_billing_chart_history",  :style => "width:95%; height:50%; display: none"}
+- else 
+  %div{:id => "view_billing_chart_current",  :style => "width:95%; height:50%;   display:none"}
+  %div{:id => "view_billing_chart_history",  :style => "width:95%; height:50%;"}
+
+#current_history_container.container
+  %ul.current_history_buttons
+    %li
+      =button_to "Current", view_billing_path({:graph => "current"})
+      .current_button
+    %li
+      .history_button
+      =button_to "History", view_billing_path({:graph => "history"})
+
+>>>>>>> d5df04c... Added history graph:
+
+%table#viewquota_table
   %head
-    %tr{:id => "viewbilling_table_header"}
+    %tr{:id => "viewquota_table_header"}
       %td item 
       %td $/month
       %td usage
@@ -71,3 +187,6 @@
           
 
 =link_to "Back to DashBoard", '/dashboard'
+%br/
+- if @dependant != nil
+  =link_to "Back to Dependants", viewdependants_path()

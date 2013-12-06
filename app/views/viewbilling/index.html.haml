@@ -7,7 +7,7 @@
   $(function() {
     var chart = new Highcharts.Chart({
       chart: {
-        renderTo: "view_billing_chart", 
+        renderTo: view_billing_chart_current, 
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false
@@ -35,9 +35,85 @@
             //#{@pie_chart.to_json}
         }]
     });
+    var chart_history = new Highcharts.Chart({
+            chart: {
+                type: 'area',
+                renderTo: view_billing_chart_history
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: #{@dummy_dates},
+                tickmarkPlacement: 'on',
+                title: {
+                    enabled: false
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Dollar Per Month'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value;
+                    }
+                }
+            },
+            tooltip: {
+                shared: true,
+                valuePrefix: '$'
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#666666',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#666666'
+                    }
+                }
+            },
+            series: 
+            
+            #{@series_history_data}
+            /*{
+                name: 'Asia',
+                data: [502, 635, 809, 947, 1402, 3634, 5268]
+            }, {
+                name: 'Africa',
+                data: [106, 107, 111, 133, 221, 767, 1766]
+            }, {
+                name: 'Europe',
+                data: [163, 203, 276, 408, 547, 729, 628]
+            }, {
+                name: 'America',
+                data: [18, 31, 54, 156, 339, 818, 1201]
+            }, {
+                name: 'Oceania',
+                data: [2, 2, 2, 6, 13, 30, 46]
+            }*/
+            
+        });  
   });
 
-%div{:id => "view_billing_chart",  :style => "width:95%; height:50%;"}
+
+-if @hide_current
+  %div{:id => "view_billing_chart_current",  :style => "width:95%; height:50%;"}
+  %div{:id => "view_billing_chart_history",  :style => "width:95%; height:50%; display: none"}
+- else 
+  %div{:id => "view_billing_chart_current",  :style => "width:95%; height:50%;   display:none"}
+  %div{:id => "view_billing_chart_history",  :style => "width:95%; height:50%;"}
+
+#current_history_container.container
+  %ul.current_history_buttons
+    %li
+      =button_to "Current", view_billing_path({:graph => "current", :dependant => @dependant}), :class => "buttons"
+      .current_button
+    %li
+      .history_button
+      =button_to "History", view_billing_path({:graph => "history", :dependant => @dependant}), :class => "buttons"
 
 
 %table#viewquota_table
@@ -61,7 +137,7 @@
     
           
 
-=link_to "Back to DashBoard", '/dashboard'
+=link_to "← Back to DashBoard", '/dashboard'
 %br/
 - if @dependant != nil
-  =link_to "Back to Dependants", viewdependants_path()
+  =link_to "← Back to Dependants", viewdependants_path()

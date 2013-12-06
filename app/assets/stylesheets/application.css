@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   background: White;
   color: DarkSlateGrey;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   font-size: 10pt;
 }
 div#header {
@@ -13,7 +13,23 @@ div#header {
   height: 70px;
   border-bottom: 10px solid #fddd88;
 }
+.current_history_buttons{
+  display: block;
+  font-size: 1.05em;
+  font-size: 3em;
+  color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-spacing: 10px;
+  margin: auto;
+}
 
+ul.current_history_buttons li{
+  display: inline-block;
+  margin-right: 100px;
+  float:middle;
+}
 .hilite {
   background-color: yellow;
 }
@@ -111,7 +127,7 @@ a {
   color: #00f;
   text-decoration: underline;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 h1 {
   color: black;
@@ -183,4 +199,44 @@ top: 9px;
   margin: 0;
   padding: 0 20px 20px;
   text-align: center
+}
+
+.link{
+  display: inline-block;
+}
+
+.buttons {
+    background-color: white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.buttons:hover {
+    border: none;
+    background:#00f;
+    color:white;
+    box-shadow: 0px 0px 1px #777;
+    border: 2px solid black;
+}
+
+.titles {
+  color:white;
+  font-size:20px;
+  position:absolute;
+  left: 505px;
+  display:block;
+}
+
+#title {
+  top: 10px;
+}
+
+#title2 {
+  top: 33px;
 }

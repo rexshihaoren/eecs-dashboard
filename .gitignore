@@ -1,24 +1,4 @@
+/tmp
 
-*.pid
+/log
 
-tmp/pids/server.pid
-
-*.pid
-
-*.log
-
-
-*.log
-
-*.log
-
-log/test.log
-
-*.log
-
-
-*.log
-
-log/development.log
-
-log/development.log
