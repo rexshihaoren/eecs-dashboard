@@ -16,21 +16,7 @@ class ViewbillingController < ApplicationController
     else
     	@user_name = session[:user_name]
     end
-    date_for_user = Usage.find_all_by_user(@user_name)
-    @most_recent_usage_dates = {}
-    date_for_user.each do |usage_model|
-      date = parse_date usage_model.date
-      
-
-      if @most_recent_usage_dates[usage_model.directory] 
-        recent_date = parse_date (@most_recent_usage_dates[usage_model.directory].date)
-	if recent_date < date
-	  @most_recent_usage_dates[usage_model.directory] = usage_model
-        end
-      else 
-	@most_recent_usage_dates[usage_model.directory] = usage_model
-      end
-    end
+    @most_recent_usage_dates = Usage.get_most_recent_model(@user_name)
      compute_cost @most_recent_usage_dates
   end
 
@@ -59,9 +45,9 @@ class ViewbillingController < ApplicationController
       @usageCost[key] = value.usage.to_s + " GB"
       @total_cost += dryness
     end
-   @total_cost = @total_cost.round(2)
-   @cost.each do |key, value|
-     @pie_chart[key] = ((value.gsub('$', '').to_i / @total_cost) * 100).round(2)
+    @total_cost = @total_cost.round(2)
+    @cost.each do |key, value|
+    @pie_chart[key] = ((value.gsub('$', '').to_i / @total_cost) * 100).round(2)
    end
 
    @pie_chart_series = []
@@ -75,13 +61,4 @@ class ViewbillingController < ApplicationController
 
   end
 
-
-  def parse_date date
-    date = date.split('.')
-    newdate = '20' + date[2] + '-' + date[0] + '-' + date[1]
-    temp = '20' + date[2]
-    date = DateTime.new(temp.to_i, date[0].to_i, date[1].to_i)
-    date
- 
-  end 
 end

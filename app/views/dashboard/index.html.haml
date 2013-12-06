@@ -3,10 +3,25 @@
 
 %h1 EECS Dashboard of #{@user_name}
 
-= link_to "View Storage", "http://iris.berkeley.edu"
-%br/
+<div id="contentBox" style="margin:0px auto; width:70%">
+<div id="column1" style="float:left; margin:0; width:33%;">
 = link_to "View Billing Information", view_billing_path()
 %br/
+Total Billing for You := #{@totalbilling}
+</div>
+
+<div id="column2" style="float:left; margin:0;width:33%;">
 = link_to "View Your Dependents", viewdependants_path()
 %br/
+Total Billing for Your Dependants := #{@totalbilling_for_dependants}
+</div>
+
+<div id="column3" style="float:left; margin:0;width:33%">
 = link_to "View Quota", viewquotas_path()
+%br/
+Your Total Storage := #{@totalusage} GB
+%br/
+Your Total Quota :=  #{@totalquota} GB
+</div>
+</div>
+

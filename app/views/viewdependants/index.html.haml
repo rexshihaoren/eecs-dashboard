@@ -1,17 +1,63 @@
 %h1 Dependants of #{@user_name}
 
+<center>
+%h3 Overview of Dependant's Billing
+</center>
+
+:javascript 
+  $(function() {
+    var chart = new Highcharts.Chart({
+      chart: {
+        renderTo: "view_billing_chart", 
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      }, 
+      title: { 
+        text: ""
+      }, 
+      
+     plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+      series: [{
+            type: 'pie',
+            name: 'Distrubtion',
+            data: #{@pie_chart_series}
+            //#{@pie_chart.to_json}
+        }]
+    });
+  });
+
+%div{:id => "view_billing_chart",  :style => "width:95%; height:50%;"}
+
 %table#viewquota_table
   %head
     %tr{:id => "viewquota_table_header"}
       %td Dependant Name
       %td Billing Page
+      %td Total Cost
       %td ViewQuota Page
+      %td Total Storage Used
+      %td Total Quota
   %tbody
-    - @dependants.each do |dep|
+    - @dependantsinfo.each do |name, array|
       %tr
-        %td= dep.login
-        %td= link_to "#{dep.login}'s billing", view_billing_path(:dependant => dep.login)
-        %td= link_to "#{dep.login}'s quota", viewquotas_path(:dependant => dep.login)
+        %td= name
+        %td= link_to "#{name}'s billing", view_billing_path(:dependant => name)
+        %td= array[0]
+        %td= link_to "#{name}'s quota", viewquotas_path(:dependant => name)
+        %td= array[1]
+        %td= array[2]
         %br/ 
           
     
