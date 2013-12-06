@@ -3,10 +3,10 @@
 
 %h1 EECS Dashboard of #{@user_name}
 
-= link_to "View Storage", "http://iris.berkeley.edu"
+= link_to "View Storage", "http://iris.eecs.berkeley.edu", :class => "link"
 %br/
-= link_to "View Billing Information", view_billing_path()
+= link_to "View Billing Information", view_billing_path(), :class => "link"
 %br/
-= link_to "View Your Dependents", viewdependants_path()
+= link_to "View Your Dependents", viewdependants_path(), :class => "link"
 %br/
-= link_to "View Quota", viewquotas_path()
+= link_to "View Quota", viewquotas_path(), :class => "link"

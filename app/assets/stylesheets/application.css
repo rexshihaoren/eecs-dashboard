@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   background: White;
   color: DarkSlateGrey;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   font-size: 10pt;
 }
 div#header {
@@ -127,7 +127,7 @@ a {
   color: #00f;
   text-decoration: underline;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 h1 {
   color: black;
@@ -192,4 +192,44 @@ top: 9px;
   margin: 0;
   padding: 0 20px 20px;
   text-align: center
+}
+
+.link{
+  display: inline-block;
+}
+
+.buttons {
+    background-color: white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.buttons:hover {
+    border: none;
+    background:#00f;
+    color:white;
+    box-shadow: 0px 0px 1px #777;
+    border: 2px solid black;
+}
+
+.titles {
+  color:white;
+  font-size:20px;
+  position:absolute;
+  left: 505px;
+  display:block;
+}
+
+#title {
+  top: 10px;
+}
+
+#title2 {
+  top: 33px;
 }
