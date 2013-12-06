@@ -138,10 +138,17 @@ h1.title {
   right: 518px;
 }
 
+h42 {
+  color: black;
+  font-size: 110%;
+  display: block;
+  text-align:center;
+}
+
 #eecs_logo {
   position: absolute;
   top: 22px;
-  right: 433px;
+  left: 500px;
 }
 
 #iris_logo{
