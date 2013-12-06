@@ -109,11 +109,11 @@
 #current_history_container.container
   %ul.current_history_buttons
     %li
-      =button_to "Current", view_billing_path({:graph => "current"}), :class => "buttons"
+      =button_to "Current", view_billing_path({:graph => "current", :dependant => @dependant}), :class => "buttons"
       .current_button
     %li
       .history_button
-      =button_to "History", view_billing_path({:graph => "history"}), :class => "buttons"
+      =button_to "History", view_billing_path({:graph => "history", :dependant => @dependant}), :class => "buttons"
 
 
 %table#viewquota_table
