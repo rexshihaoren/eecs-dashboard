@@ -10,12 +10,8 @@ Background: billing info for graduate students and connections to graduate stude
 
   | user            | directory | date    | usage  |  max    | rate | 
   | aculich	    | proj1     | 11.1.14 | 50     |  100    | 0.09 |
-  | aculich	    | proj1     | 11.2.14 | 80     |  100    | 0.09 |
-  | aculich	    | proj1     | 11.3.14 | 90     |  100    | 0.09 |
-  | aculich	    | proj1     | 11.4.14 | 70     |  100    | 0.09 |
-  | aculich	    | proj1     | 11.5.14 | 100    |  100    | 0.09 |
-  | aculich	    | proj1     | 11.6.14 | 120    |  150    | 0.09 |
-  | aculich         | proj2     | 10.1.14 | 100    |  120    | 0.09 |
+  | Bob  	    | proj1     | 11.2.14 | 80     |  100    | 0.09 |
+  | Bill	    | proj1     | 11.3.14 | 90     |  100    | 0.09 |
 
   And aculich is being billed for Bob and Bill
 
@@ -23,15 +19,12 @@ Background: billing info for graduate students and connections to graduate stude
 
 Scenario: see billing summary
   
-  Then I should see "total storage used: 630GB"
-  Then I should see "total billing: $120.00"
+  Then I should see "Total Billing for You := 96.5"
 
 Scenario: see quota summary
-  Then I should see "proj1"
-  Then I should see "proj2"
-  Then I should see "120 out of 150 GB used"
-  Then I should see "100 out of 120 GB used"
+  Then I should see "Your Total Storage := 50 GB"
+  Then I should see "Your Total Quota := 100 GB"
 
-Scenario: see basic dependencies
-  Then I should see "Bob"
-  Then I should see "Bill"
+Scenario: see dependency summary
+  Then I should see "Total Billing for Your Dependants := 199.3"
+
