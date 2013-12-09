@@ -19,12 +19,12 @@ Background: billing info for graduate students and connections to graduate stude
 
 Scenario: see billing summary
   
-  Then I should see "Total Billing for You := 96.5"
+  Then I should see "Total Billing for You ="
 
 Scenario: see quota summary
-  Then I should see "Your Total Storage := 50 GB"
-  Then I should see "Your Total Quota := 100 GB"
+  Then I should see "Your Total Storage ="
+  Then I should see "Your Total Quota =
 
 Scenario: see dependency summary
-  Then I should see "Total Billing for Your Dependants := 199.3"
+  Then I should see "Total Billing for Your Dependents ="
 
