@@ -4,23 +4,32 @@
 %h1 EECS Dashboard of #{@user_name}
 
 <div id="contentBox" style="margin:0px auto; width:70%">
-<div id="column1" style="float:left; margin:0; width:33%;">
-= link_to "View Billing Information", view_billing_path()
+<div id="column1" style="float:left; margin:0; width:50%;">
+%img{:src => "/images/bill.png", :class => "dash_img"}
+= link_to "View Billing Information", view_billing_path(), :class => "dash_link"
 %br/
-Total Billing for You := #{@totalbilling}
+Total Billing for You = $#{@totalbilling}
+%br/
+%br/
+%br/
+%br/
+
+%img{:src => "/images/dep.png", :class => "dash_img"}
+= link_to "View Your Dependents", viewdependants_path(), :class => "dash_link"
+%br/
+Total Billing for Your Dependents = $#{@totalbilling_for_dependants}
+%br/
+%br/
+%br/
+%br/
+
+%img{:src => "/images/quota.png", :class => "dash_img"}
+= link_to "View Quota", viewquotas_path(), :class => "dash_link"
+%br/
+Your Total Storage = #{@totalusage} GB
+%br/
+Your Total Quota =  #{@totalquota} GB
+%br/
 </div>
 
-<div id="column2" style="float:left; margin:0;width:33%;">
-= link_to "View Your Dependents", viewdependants_path()
-%br/
-Total Billing for Your Dependants := #{@totalbilling_for_dependants}
-</div>
-
-<div id="column3" style="float:left; margin:0;width:33%">
-= link_to "View Quota", viewquotas_path()
-%br/
-Your Total Storage := #{@totalusage} GB
-%br/
-Your Total Quota :=  #{@totalquota} GB
-</div>
 </div>
